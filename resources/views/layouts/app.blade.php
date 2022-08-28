@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>SIMAKJAR</title>
+  <title>BAIMANSTORE</title>
   @include('layouts.css')
 </head>
 <body class="hold-transition sidebar-mini">
@@ -30,7 +30,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="/" class="brand-link">
       <img src="/theme/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Perdagin</span>
+      <span class="brand-text font-weight-light">BJM</span>
     </a>
     <div class="sidebar">
       
