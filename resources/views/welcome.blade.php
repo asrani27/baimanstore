@@ -20,13 +20,13 @@
             </div> --}}
             @foreach ($banner as $item)
                 
-            {{-- <div class="carousel-item {{$item->id == 1 ? 'active':''}}">
+            <div class="carousel-item {{$item->id == 1 ? 'active':''}}">
               @if ($item->foto == null)
               <img class="d-block w-100" src="https://p0.piqsels.com/preview/378/771/661/romania-cluj-napoca-wallpaper-hd.jpg" height="400px">
               @else
               <img class="d-block w-100" src="/storage/banner/{{$item->foto}}" height="400px">
               @endif
-            </div> --}}
+            </div>
             @endforeach
           </div>
           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
