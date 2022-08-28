@@ -13,11 +13,11 @@
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
           </ol>
           <div class="carousel-inner text-center">
-            <div class="carousel-item active">
+            {{-- <div class="carousel-item active">
               <video  width="100%" height="400" autoplay loop muted controls>
                 <source src="/theme/welcome.mp4" type="video/mp4" />
               </video>
-            </div>
+            </div> --}}
             @foreach ($banner as $item)
                 
             {{-- <div class="carousel-item {{$item->id == 1 ? 'active':''}}">

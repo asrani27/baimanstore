@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SIMAKJAR</title>
+  <title>BAIMAN STORE</title>
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <link rel="stylesheet" href="/theme/plugins/fontawesome-free/css/all.min.css">
@@ -24,7 +24,7 @@
     <div class="container">
       <a href="/" class="navbar-brand">
         <img src="/theme/logo.png" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">SIMAKJAR</span>
+        <span class="brand-text font-weight-light">BAIMANSTORE</span>
       </a>
 
       <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
