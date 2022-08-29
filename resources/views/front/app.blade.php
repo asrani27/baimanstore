@@ -135,7 +135,7 @@
     <br/>
     <div class="row text-center">
       <div class="col-md-12">
-        <strong>DISPERDAGIN</strong> 
+        <strong>PEMKO BANJARMASIN</strong> 
       </div>
     </div>
     </div>
