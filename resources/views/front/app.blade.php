@@ -20,7 +20,7 @@
 <div class="wrapper">
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand-md navbar-dark bg-gradient-success">
+  <nav class="main-header navbar navbar-expand-md navbar-dark bg-gradient-primary text-white">
     <div class="container">
       <a href="/" class="navbar-brand">
         <img src="/theme/logo.png" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -30,7 +30,6 @@
       <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <div class="collapse navbar-collapse order-3" id="navbarCollapse">
         <!-- Left navbar links -->
         <ul class="navbar-nav text-bold">
@@ -59,6 +58,9 @@
           
           <li class="nav-item">
             <a href="/login" class="nav-link"><i class="fas fa-sign-in-alt"></i> Login</a>
+          </li>
+          <li class="nav-item">
+            <a href="/daftar" class="nav-link"><i class="fas fa-edit"></i> Daftar</a>
           </li>
         </ul>
 

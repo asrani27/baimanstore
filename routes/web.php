@@ -16,6 +16,7 @@ use App\Http\Controllers\LayananController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\GantiPassController;
+use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\ProdukSayaController;
 use App\Http\Controllers\PersyaratanController;
@@ -29,18 +30,23 @@ Route::get('/semuaproduk', [HomeController::class, 'semuaproduk']);
 Route::get('/kategori/{id}/detail', [HomeController::class, 'kategoriproduk']);
 Route::get('/produk/cari', [HomeController::class, 'cariProduk']);
 Route::get('/produk/{id}/detail', [HomeController::class, 'detailProduk']);
+Route::get('/daftar', [HomeController::class, 'daftar']);
+Route::post('/daftar/pembeli', [HomeController::class, 'daftarPembeli']);
+Route::post('/daftar/penjual', [HomeController::class, 'daftarPenjual']);
 
-Route::get('/logout', function(){
+Route::get('/logout', function () {
     Auth::logout();
     return redirect('/');
 });
 
-Route::get('/login', function(){
-    if(Auth::check()){
-        if(Auth::user()->hasRole('superadmin')){
+Route::get('/login', function () {
+    if (Auth::check()) {
+        if (Auth::user()->hasRole('superadmin')) {
             return redirect('/superadmin/home');
-        }else{
-            return redirect('/user/home');
+        } elseif (Auth::user()->hasRole('pembeli')) {
+            return redirect('/pembeli/home');
+        } elseif (Auth::user()->hasRole('penjual')) {
+            return redirect('/penjual/home');
         }
     }
     return view('login');
@@ -54,7 +60,7 @@ Route::group(['middleware' => ['auth', 'role:superadmin']], function () {
     Route::prefix('superadmin')->group(function () {
         Route::get('gantipass', [HomeController::class, 'gantipass']);
         Route::post('gantipass', [HomeController::class, 'resetpass']);
-        
+
         Route::get('/toko/{id}/akun', [TokoController::class, 'akun']);
         Route::get('/toko/{id}/reset', [TokoController::class, 'reset']);
 
@@ -66,17 +72,27 @@ Route::group(['middleware' => ['auth', 'role:superadmin']], function () {
     });
 });
 
-Route::group(['middleware' => ['auth', 'role:user']], function () {
-    Route::prefix('user')->group(function () {
+Route::group(['middleware' => ['auth', 'role:pembeli']], function () {
+    Route::prefix('pembeli')->group(function () {
+        Route::get('gantipass', [GantiPassController::class, 'gantipassuser']);
+        Route::post('gantipass', [GantiPassController::class, 'resetpass']);
+        Route::post('profil', [GantiPassController::class, 'profil']);
+        Route::get('keranjangsaya', [KeranjangController::class, 'index']);
+    });
+});
+
+Route::group(['middleware' => ['auth', 'role:penjual']], function () {
+    Route::prefix('penjual')->group(function () {
         Route::get('gantipass', [GantiPassController::class, 'gantipassuser']);
         Route::post('gantipass', [GantiPassController::class, 'resetpass']);
         Route::post('profil', [GantiPassController::class, 'profil']);
         Route::resource('produksaya', ProdukSayaController::class);
-    });    
+    });
 });
 
-
-Route::group(['middleware' => ['auth', 'role:superadmin|user']], function () {
+Route::group(['middleware' => ['auth', 'role:superadmin|user|penjual|pembeli']], function () {
     Route::get('/superadmin/home', [HomeController::class, 'superadmin']);
     Route::get('/user/home', [HomeController::class, 'user']);
+    Route::get('/penjual/home', [HomeController::class, 'penjual']);
+    Route::get('/pembeli/home', [HomeController::class, 'pembeli']);
 });

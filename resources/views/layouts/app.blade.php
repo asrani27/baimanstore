@@ -44,8 +44,10 @@
     </div>
       @if (Auth::user()->hasRole('superadmin'))
         @include('layouts.menu_superadmin')
-      @else
-        @include('layouts.menu_user')
+      @elseif (Auth::user()->hasRole('pembeli'))
+        @include('layouts.menu_pembeli')
+      @elseif (Auth::user()->hasRole('penjual'))
+        @include('layouts.menu_penjual')
       @endif
 
 

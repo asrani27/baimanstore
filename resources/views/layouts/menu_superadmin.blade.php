@@ -19,10 +19,18 @@
         </a>
     </li>
     <li class="nav-item">
+        <a href="/superadmin/pembeli" class="nav-link {{ Request::is('superadmin/pembeli*') ? 'active' : '' }}">
+            <i class="nav-icon fas fa-users"></i>
+            <p>
+                Pembeli
+            </p>
+        </a>
+    </li>
+    <li class="nav-item">
         <a href="/superadmin/toko" class="nav-link {{ Request::is('superadmin/toko*') ? 'active' : '' }}">
             <i class="nav-icon fas fa-users"></i>
             <p>
-                Pengrajin
+                UMKM / Penjual
             </p>
         </a>
     </li>
@@ -31,14 +39,14 @@
     <a href="/superadmin/produk" class="nav-link {{ Request::is('superadmin/produk*') ? 'active' : '' }}">
         <i class="nav-icon fas fa-shopping-cart"></i>
         <p>
-            Produk Usaha
+            Produk
         </p>
     </a>
     </li>
     
     <li class="nav-item">
     <a href="/superadmin/banner" class="nav-link {{ Request::is('superadmin/Banner*') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-file"></i>
+        <i class="nav-icon fas fa-image"></i>
         <p>
         Banner
         </p>
@@ -53,6 +61,16 @@
         </p>
     </a>
     </li>
+
+    {{-- <li class="nav-header">LAPORAN</li>
+    <li class="nav-item">
+    <a href="/superadmin/laporan/transaksi" class="nav-link">
+        <i class="nav-icon fas fa-file"></i>
+        <p>
+        Transaksi
+        </p>
+    </a>
+    </li> --}}
 
     <li class="nav-header">SETTING</li>
     <li class="nav-item">

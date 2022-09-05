@@ -14,7 +14,7 @@ Beranda
         <span class="info-box-icon"><i class="fas fa-users"></i></span>
 
         <div class="info-box-content">
-          <span class="info-box-text">Total Pengrajin</span>
+          <span class="info-box-text">Total UMKM/Penjual</span>
           <span class="info-box-number">{{$pu}}</span>
 
           <div class="progress">

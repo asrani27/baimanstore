@@ -10,18 +10,18 @@ use Illuminate\Support\Facades\Validator;
 
 class TokoController extends Controller
 {
-    
+
     public function index()
     {
-        $data = Toko::paginate(10);
-        return view('superadmin.toko.index',compact('data'));
+        $data = Toko::orderBy('id', 'DESC')->paginate(10);
+        return view('superadmin.toko.index', compact('data'));
     }
-    
+
     public function create()
     {
         return view('superadmin.toko.create');
     }
-    
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -34,12 +34,12 @@ class TokoController extends Controller
             return back();
         }
 
-        if($request->foto == null){
+        if ($request->foto == null) {
             $filename = null;
-        }else{
-            $extension = $request->foto->getClientOriginalExtension();  
-            $filename = uniqid().'.'.$extension;
-            $request->foto->storeAs('/public/',$filename);
+        } else {
+            $extension = $request->foto->getClientOriginalExtension();
+            $filename = uniqid() . '.' . $extension;
+            $request->foto->storeAs('/public/', $filename);
         }
 
         $attr = $request->all();
@@ -48,24 +48,23 @@ class TokoController extends Controller
         $attr['long'] = '114.6000705394259';
 
         Toko::create($attr);
-        
+
         toastr()->success('Sukses Di Simpan');
         return redirect('/superadmin/toko');
-        
     }
-    
+
     public function show($id)
     {
         //
     }
-    
+
     public function edit($id)
     {
         $data = Toko::find($id);
-        
-        return view('superadmin.toko.edit',compact('data'));
+
+        return view('superadmin.toko.edit', compact('data'));
     }
-    
+
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
@@ -78,12 +77,12 @@ class TokoController extends Controller
             return back();
         }
 
-        if($request->foto == null){
+        if ($request->foto == null) {
             $filename = Toko::find($id)->foto;
-        }else{
-            $extension = $request->foto->getClientOriginalExtension(); 
-            $filename = uniqid().'.'.$extension;
-            $request->foto->storeAs('/public/',$filename);
+        } else {
+            $extension = $request->foto->getClientOriginalExtension();
+            $filename = uniqid() . '.' . $extension;
+            $request->foto->storeAs('/public/', $filename);
         }
 
         $attr = $request->all();
@@ -104,20 +103,20 @@ class TokoController extends Controller
 
     public function akun($id)
     {
-        $role = Role::where('name', 'user')->first();
+        $role = Role::where('name', 'penjual')->first();
         //Create User Peserta
         $toko = Toko::find($id);
         $n = new User;
         $n->name = $toko->nama_toko;
-        $n->username = 'pu'.$toko->id;
-        $n->password = bcrypt('pengusaha');
+        $n->username = 'umkm' . $toko->id;
+        $n->password = bcrypt('penjual');
         $n->save();
 
         $n->roles()->attach($role);
 
         $toko->update(['user_id' => $n->id]);
 
-        toastr()->success('Akun sukses di buat, Password : pengusaha');
+        toastr()->success('Akun sukses di buat, Password : penjual');
         return back();
     }
 
@@ -125,10 +124,10 @@ class TokoController extends Controller
     {
         $u = Toko::find($id)->user;
         $u->update([
-            'password' => bcrypt('pengusaha')
+            'password' => bcrypt('penjual')
         ]);
 
-        toastr()->success('Password direset : pengusaha');
+        toastr()->success('Password direset : penjual');
         return back();
     }
 }

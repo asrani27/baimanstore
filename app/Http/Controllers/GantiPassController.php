@@ -9,20 +9,20 @@ class GantiPassController extends Controller
 {
     public function gantipassuser()
     {
-        return view('user.gantipass.index');
+        return view('penjual.gantipass.index');
     }
 
     public function resetpass(Request $req)
     {
-        if($req->password1 == $req->password2){
+        if ($req->password1 == $req->password2) {
             $u = Auth::user();
             $u->password = bcrypt($req->password1);
             $u->save();
-    
+
             Auth::logout();
             toastr()->success('Berhasil Di Ubah, Login Dengan Password Baru');
             return redirect('/');
-        }else{
+        } else {
             toastr()->error('Password Tidak Sama');
             return back();
         }
