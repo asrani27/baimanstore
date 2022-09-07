@@ -68,12 +68,63 @@
                     </div>
                     
                     <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Nomor NIK</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="nik" required>
+                        </div>
+                    </div>
+  
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Nomor NPWP</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="npwp" required>
+                        </div>
+                    </div>
+                      
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">BANK</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="bank" required>
+                        </div>
+                    </div>
+                      
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Nomor Rekening</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="norek" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Upload NIK KTP</label>
+                        <div class="col-sm-10">
+                            <input type="file" class="form-control" name="file_nik">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Upload NPWP</label>
+                        <div class="col-sm-10">
+                            <input type="file" class="form-control" name="file_npwp">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Gambar</label>
                     <div class="col-sm-10">
                         <input type="file" class="form-control" name="foto">
                     </div>
                     </div>
 
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Status</label>
+                        <div class="col-sm-10">
+                            <select name="is_aktif" class="form-control">
+                                <option value="1">Aktif</option>
+                                <option value="0" selected>Tidak Aktif</option>
+                            </select>
+                        </div>
+                    </div>
 
                     <div class="form-group row">
                     <label class="col-sm-2 col-form-label"></label>

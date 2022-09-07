@@ -10,7 +10,7 @@
 <div class="row">
     <div class="col-12">
         <a href="/superadmin/kategori" class="btn btn-sm btn-secondary"><i class="fas fa-arrow-left"></i> Kembali</a><br/><br/>
-<form method="post" action="/superadmin/kategori">
+<form method="post" action="/superadmin/kategori" enctype="multipart/form-data">
     @csrf
     <div class="row">
         <div class="col-lg-12 col-12">
@@ -24,6 +24,24 @@
                     </div>
                     </div>
 
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Komoditas</label>
+                        <div class="col-sm-10">
+                            <select name="komoditas" class="form-control" required>
+                                <option value="">-pilih-</option>
+                                <option value="barang">Barang</option>
+                                <option value="jasa">Jasa</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Icon/Gambar</label>
+                        <div class="col-sm-10">
+                            <input type="file" class="form-control" name="foto" required>
+                        </div>
+                    </div>
+    
                     <div class="form-group row">
                     <label class="col-sm-2 col-form-label"></label>
                     <div class="col-sm-10">

@@ -28,12 +28,14 @@ class TokoController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'foto'  => 'mimes:jpg,png,jpeg,bmp|max:10240',
+            'foto'  => 'mimes:jpg,png,jpeg,bmp|max:5024',
+            'file_nik'  => 'mimes:jpg,png,jpeg,bmp|max:5024',
+            'file_npwp'  => 'mimes:jpg,png,jpeg,bmp|max:5024',
         ]);
 
         if ($validator->fails()) {
             $request->flash();
-            toastr()->error('File harus Gambar dan Maks 10MB');
+            toastr()->error('File harus Gambar dan Maks 5MB');
             return back();
         }
 
@@ -63,8 +65,48 @@ class TokoController extends Controller
             $image->move($realPath, $filename);
         }
 
+        if ($request->file_nik == null) {
+            $file_nik = null;
+        } else {
+            $extension = $request->file_nik->getClientOriginalExtension();
+            $file_nik = uniqid() . '.' . $extension;
+
+            $image = $request->file('file_nik');
+
+            $realPath = public_path('storage') . '/toko_' . $toko->id . '/real';
+            $compressPath = public_path('storage');
+
+            $img = Image::make($image->path());
+            $img->resize(1000, 1000, function ($const) {
+                $const->aspectRatio();
+            })->save($compressPath . '/' . $file_nik);
+
+            Storage::disk('public')->move($file_nik, '/toko_' . $toko->id . '/compress/' . $file_nik);
+            $image->move($realPath, $file_nik);
+        }
+        if ($request->file_npwp == null) {
+            $file_npwp = null;
+        } else {
+            $extension = $request->file_npwp->getClientOriginalExtension();
+            $file_npwp = uniqid() . '.' . $extension;
+
+            $image = $request->file('file_npwp');
+
+            $realPath = public_path('storage') . '/toko_' . $toko->id . '/real';
+            $compressPath = public_path('storage');
+
+            $img = Image::make($image->path());
+            $img->resize(1000, 1000, function ($const) {
+                $const->aspectRatio();
+            })->save($compressPath . '/' . $file_npwp);
+
+            Storage::disk('public')->move($file_npwp, '/toko_' . $toko->id . '/compress/' . $file_npwp);
+            $image->move($realPath, $file_npwp);
+        }
         $toko->update([
             'foto' => $filename,
+            'file_nik' => $file_nik,
+            'file_npwp' => $file_npwp,
         ]);
 
         toastr()->success('Sukses Di Simpan');
@@ -86,12 +128,14 @@ class TokoController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'foto'  => 'mimes:jpg,png,jpeg,bmp|max:10240',
+            'foto'  => 'mimes:jpg,png,jpeg,bmp|max:5024',
+            'file_nik'  => 'mimes:jpg,png,jpeg,bmp|max:5024',
+            'file_npwp'  => 'mimes:jpg,png,jpeg,bmp|max:5024',
         ]);
 
         if ($validator->fails()) {
             $request->flash();
-            toastr()->error('File harus Gambar dan Maks 10MB');
+            toastr()->error('File harus Gambar dan Maks 5MB');
             return back();
         }
 
@@ -115,8 +159,50 @@ class TokoController extends Controller
             $image->move($realPath, $filename);
         }
 
+        if ($request->file_nik == null) {
+            $file_nik = Toko::find($id)->file_nik;
+        } else {
+            $extension = $request->file_nik->getClientOriginalExtension();
+            $file_nik = uniqid() . '.' . $extension;
+
+            $image = $request->file('file_nik');
+
+            $realPath = public_path('storage') . '/toko_' . $id . '/real';
+            $compressPath = public_path('storage');
+
+            $img = Image::make($image->path());
+            $img->resize(1000, 1000, function ($const) {
+                $const->aspectRatio();
+            })->save($compressPath . '/' . $file_nik);
+
+            Storage::disk('public')->move($file_nik, '/toko_' . $id . '/compress/' . $file_nik);
+            $image->move($realPath, $file_nik);
+        }
+
+        if ($request->file_npwp == null) {
+            $file_npwp = Toko::find($id)->file_npwp;
+        } else {
+            $extension = $request->file_npwp->getClientOriginalExtension();
+            $file_npwp = uniqid() . '.' . $extension;
+
+            $image = $request->file('file_npwp');
+
+            $realPath = public_path('storage') . '/toko_' . $id . '/real';
+            $compressPath = public_path('storage');
+
+            $img = Image::make($image->path());
+            $img->resize(1000, 1000, function ($const) {
+                $const->aspectRatio();
+            })->save($compressPath . '/' . $file_npwp);
+
+            Storage::disk('public')->move($file_npwp, '/toko_' . $id . '/compress/' . $file_npwp);
+            $image->move($realPath, $file_npwp);
+        }
+
         $attr = $request->all();
         $attr['foto'] = $filename;
+        $attr['file_nik'] = $file_nik;
+        $attr['file_npwp'] = $file_npwp;
 
         Toko::find($id)->update($attr);
 

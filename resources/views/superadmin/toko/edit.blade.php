@@ -72,10 +72,79 @@
                     </div>
                     
                     <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Nomor NIK</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="nik" value="{{$data->nik}}" required>
+                        </div>
+                    </div>
+  
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Nomor NPWP</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="npwp" value="{{$data->npwp}}" required>
+                        </div>
+                    </div>
+                      
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">BANK</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="bank" value="{{$data->bank}}" required>
+                        </div>
+                    </div>
+                      
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Nomor Rekening</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="norek" value="{{$data->norek}}" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Upload NIK KTP</label>
+                        <div class="col-sm-10">
+                            <input type="file" class="form-control" name="file_nik">
+                            @if ($data->file_nik == null)
+                            <img class="direct-chat-img" src="/theme/dist/img/default-150x150.png" alt="message user image">
+                            @else
+                            <a href="/storage/toko_{{$data->id}}/compress/{{$data->file_nik}}" target="_blank"><img src="/storage/toko_{{$data->id}}/compress/{{$data->file_nik}}" width="20%"></a>
+                                
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Upload NPWP</label>
+                        <div class="col-sm-10">
+                            <input type="file" class="form-control" name="file_npwp">
+                            @if ($data->file_npwp == null)
+                            <img class="direct-chat-img" src="/theme/dist/img/default-150x150.png" alt="message user image">
+                            @else
+                            <a href="/storage/toko_{{$data->id}}/compress/{{$data->file_npwp}}" target="_blank"><img src="/storage/toko_{{$data->id}}/compress/{{$data->file_npwp}}" width="20%"></a>
+                                
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Gambar</label>
                     <div class="col-sm-10">
                         <input type="file" class="form-control" name="foto">
+                            @if ($data->foto == null)
+                            <img class="direct-chat-img" src="/theme/dist/img/default-150x150.png" alt="message user image">
+                            @else
+                            <a href="/storage/toko_{{$data->id}}/compress/{{$data->foto}}" target="_blank"><img src="/storage/toko_{{$data->id}}/compress/{{$data->foto}}" width="20%"></a>
+                                
+                            @endif
                     </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Status</label>
+                        <div class="col-sm-10">
+                            <select name="is_aktif" class="form-control">
+                                <option value="1" {{$data->is_aktif == 1 ? 'selected':''}}>Aktif</option>
+                                <option value="0" {{$data->is_aktif == 0 ? 'selected':''}}>Tidak Aktif</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="form-group row">
                     <label class="col-sm-2 col-form-label"></label>

@@ -10,7 +10,7 @@
 <div class="row">
     <div class="col-12">
         <a href="/superadmin/kategori" class="btn btn-sm btn-secondary"><i class="fas fa-arrow-left"></i> Kembali</a><br/><br/>
-<form method="post" action="/superadmin/kategori/{{$data->id}}">
+<form method="post" action="/superadmin/kategori/{{$data->id}}" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     <div class="row">
@@ -23,6 +23,23 @@
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="nama" required value="{{$data->nama}}" >
                     </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Komoditas</label>
+                        <div class="col-sm-10">
+                            <select name="komoditas" class="form-control" required>
+                                <option value="">-pilih-</option>
+                                <option value="barang" {{$data->komoditas == 'barang' ? 'selected':''}}>Barang</option>
+                                <option value="jasa" {{$data->komoditas == 'jasa' ? 'selected':''}}>Jasa</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Icon/Gambar</label>
+                        <div class="col-sm-10">
+                            <input type="file" class="form-control" name="foto">
+                        </div>
                     </div>
                     <div class="form-group row">
                     <label class="col-sm-2 col-form-label"></label>

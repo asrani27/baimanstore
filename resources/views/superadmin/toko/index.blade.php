@@ -53,7 +53,7 @@
                         @if ($item->is_aktif == 0)
                         <span class="badge badge-danger">tidak aktif</span>
                         @else
-                        <span class="badge badge-danger"> aktif</span>
+                        <span class="badge badge-success"> aktif</span>
                             
                         @endif
                     </td>

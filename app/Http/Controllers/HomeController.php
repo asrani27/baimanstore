@@ -36,6 +36,11 @@ class HomeController extends Controller
 
     public function penjual()
     {
+        if (Auth::user()->toko == null) {
+            Auth::logout();
+            toastr()->error('User Telah Di Hapus Dari Aplikasi');
+            return redirect('/login');
+        }
         $tp = count(Produk::where('toko_id', Auth::user()->toko->id)->get());
         $pt = Auth::user()->toko->nama_toko;
         $data = Auth::user()->toko;
@@ -89,9 +94,11 @@ class HomeController extends Controller
     {
         $produk = Produk::orderBy('created_at', 'DESC')->paginate(12);
         $banner = Banner::get();
-        $kategori = Kategori::get();
+        $kategoriBarang = Kategori::where('komoditas', 'barang')->get();
+        $kategoriJasa = Kategori::where('komoditas', 'jasa')->get();
         $profil = Profil::first();
-        return view('welcome', compact('produk', 'banner', 'kategori', 'profil'));
+        $kategori = Kategori::get();
+        return view('welcome', compact('produk', 'banner', 'kategoriBarang', 'kategoriJasa', 'kategori', 'profil'));
     }
 
     public function tentang()
