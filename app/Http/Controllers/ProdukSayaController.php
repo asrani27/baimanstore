@@ -15,6 +15,11 @@ class ProdukSayaController extends Controller
 
     public function index()
     {
+        if (Auth::user()->toko->is_aktif == 0) {
+            toastr()->error('Akun Anda Belum Aktif');
+            return back();
+        }
+
         $toko_id = Auth::user()->toko->id;
         $data = Produk::where('toko_id', $toko_id)->orderBy('created_at', 'DESC')->paginate(10);
         return view('penjual.produk.index', compact('data'));
@@ -22,6 +27,10 @@ class ProdukSayaController extends Controller
 
     public function create()
     {
+        if (Auth::user()->toko->is_aktif == 0) {
+            toastr()->error('Akun Anda Belum Aktif');
+            return back();
+        }
         $kategori = Kategori::get();
         return view('penjual.produk.create', compact('kategori'));
     }
@@ -80,6 +89,11 @@ class ProdukSayaController extends Controller
 
     public function edit($id)
     {
+        if (Auth::user()->toko->is_aktif == 0) {
+            toastr()->error('Akun Anda Belum Aktif');
+            return back();
+        }
+
         $data = Produk::find($id);
 
         $kategori = Kategori::get();

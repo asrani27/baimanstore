@@ -15,6 +15,14 @@ crossorigin=""/>
 Beranda
 @endsection
 @section('content')
+@if (Auth::user()->toko->is_aktif == 0)
+<div class="alert alert-dismissible bg-pink">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+  <h5><i class="icon fas fa-ban"></i> Alert!</h5>
+  Akun Anda belum di verifikasi oleh admin,sehingga tidak bisa melakukan input produk.
+</div>
+@endif
+
 <div class="row">
     <div class="col-md-6 col-sm-6 col-12">
       <div class="info-box bg-gradient-info">
@@ -74,7 +82,7 @@ Beranda
               $no =1;
           @endphp
           <tbody>
-          <form  method="post" action="/penjual/profil">
+          <form  method="post" action="/penjual/profil" enctype="multipart/form-data">
           @csrf
           <tr>
               <td>1</td>
@@ -88,32 +96,62 @@ Beranda
           </tr>
           <tr>
               <td>3</td>
+              <td>Nomor NIK</td>
+              <td><input type="text" class="form-control" name="nik" value="{{$data->nik}}"></td>
+          </tr>
+          <tr>
+              <td>4</td>
               <td>Nama Pemilik Usaha</td>
               <td><input type="text" class="form-control" name="nama_pemilik" value="{{$data->nama_pemilik}}"></td>
           </tr>
           <tr>
-              <td>4</td>
+              <td>5</td>
+              <td>Nomor NPWP</td>
+              <td><input type="text" class="form-control" name="npwp" value="{{$data->npwp}}"></td>
+          </tr>
+          <tr>
+              <td>6</td>
+              <td>BANK</td>
+              <td><input type="text" class="form-control" name="bank" value="{{$data->bank}}"></td>
+          </tr>
+          <tr>
+              <td>7</td>
+              <td>Nomor Rekening</td>
+              <td><input type="text" class="form-control" name="norek" value="{{$data->norek}}"></td>
+          </tr>
+          <tr>
+              <td>8</td>
               <td>Alamat Pemilik</td>
               <td><input type="text" class="form-control" name="alamat" value="{{$data->alamat}}"></td>
           </tr>
           <tr>
-              <td>5</td>
+              <td>9</td>
               <td>Alamat Usaha</td>
               <td><input type="text" class="form-control" name="alamat_toko" value="{{$data->alamat_toko}}"></td>
           </tr>
           <tr>
-              <td>6</td>
+              <td>10</td>
               <td>Email</td>
               <td><input type="text" class="form-control" name="email" value="{{$data->email}}"></td>
           </tr>
           <tr>
-              <td>7</td>
+              <td>11</td>
               <td>Telp</td>
               <td><input type="text" class="form-control" name="telp" value="{{$data->telp}}"></td>
           </tr>
           <tr>
-              <td>11</td>
-              <td>Peta Lokasi</td>
+              <td>12</td>
+              <td>Upload NIK (jpg/png)</td>
+              <td><input type="file" class="form-control" name="file_nik"></td>
+          </tr>
+          <tr>
+              <td>13</td>
+              <td>Upload NPWP (jpg/png)</td>
+              <td><input type="file" class="form-control" name="file_npwp"></td>
+          </tr>
+          <tr>
+              <td>14</td>
+              <td>Peta Lokasi Usaha</td>
               <td><div id="mapid"></div>
               
             <input type="hidden" class="form-control" name="lat" id="lat" value="{{$data->lat}}" required readonly>
@@ -125,7 +163,7 @@ Beranda
           <tr>
               <td></td>
               <td></td>
-              <td><button type="submit" class="btn btn-success btn-sm"><i class="fas fa-save"></i> UPDATE</button></td>
+              <td><button type="submit" class="btn btn-success btn-md btn-block"><i class="fas fa-save"></i> UPDATE</button></td>
           </tr>
           </form>
 
