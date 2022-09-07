@@ -55,19 +55,18 @@ class ProdukSayaController extends Controller
             $extension = $request->foto->getClientOriginalExtension();
             $filename = uniqid() . '.' . $extension;
 
-            $request->foto->storeAs('/public/' . $toko_id, $filename);
-
             $image = $request->file('foto');
-            $input['imagename'] = time() . '.' . $image->extension();
 
-            $filePath = public_path('storage');
+            $realPath = public_path('storage') . '/toko_' . $toko_id . '/real';
+            $compressPath = public_path('storage');
 
             $img = Image::make($image->path());
             $img->resize(1000, 1000, function ($const) {
                 $const->aspectRatio();
-            })->save($filePath . '/' . $filename);
+            })->save($compressPath . '/' . $filename);
 
-            $filePath = public_path('/images');
+            Storage::disk('public')->move($filename, '/toko_' . $toko_id . '/compress/' . $filename);
+            $image->move($realPath, $filename);
         }
 
 
@@ -119,7 +118,19 @@ class ProdukSayaController extends Controller
 
             $extension = $request->foto->getClientOriginalExtension();
             $filename = uniqid() . '.' . $extension;
-            $request->foto->storeAs('/public/' . $toko_id, $filename);
+
+            $image = $request->file('foto');
+
+            $realPath = public_path('storage') . '/toko_' . $toko_id . '/real';
+            $compressPath = public_path('storage');
+
+            $img = Image::make($image->path());
+            $img->resize(1000, 1000, function ($const) {
+                $const->aspectRatio();
+            })->save($compressPath . '/' . $filename);
+
+            Storage::disk('public')->move($filename, '/toko_' . $toko_id . '/compress/' . $filename);
+            $image->move($realPath, $filename);
         }
 
         $attr = $request->all();

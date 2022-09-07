@@ -7,6 +7,8 @@ use App\Models\Toko;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Image;
+use Storage;
 
 class TokoController extends Controller
 {
@@ -24,30 +26,46 @@ class TokoController extends Controller
 
     public function store(Request $request)
     {
+
         $validator = Validator::make($request->all(), [
-            'foto'  => 'mimes:jpg,png,jpeg,bmp|max:5120',
+            'foto'  => 'mimes:jpg,png,jpeg,bmp|max:10240',
         ]);
 
         if ($validator->fails()) {
             $request->flash();
-            toastr()->error('File harus Gambar dan Maks 5MB');
+            toastr()->error('File harus Gambar dan Maks 10MB');
             return back();
         }
+
+        $attr = $request->all();
+        $attr['lat'] = '-3.320363756863717';
+        $attr['long'] = '114.6000705394259';
+
+        $toko = Toko::create($attr);
 
         if ($request->foto == null) {
             $filename = null;
         } else {
             $extension = $request->foto->getClientOriginalExtension();
             $filename = uniqid() . '.' . $extension;
-            $request->foto->storeAs('/public/', $filename);
+
+            $image = $request->file('foto');
+
+            $realPath = public_path('storage') . '/toko_' . $toko->id . '/real';
+            $compressPath = public_path('storage');
+
+            $img = Image::make($image->path());
+            $img->resize(1000, 1000, function ($const) {
+                $const->aspectRatio();
+            })->save($compressPath . '/' . $filename);
+
+            Storage::disk('public')->move($filename, '/toko_' . $toko->id . '/compress/' . $filename);
+            $image->move($realPath, $filename);
         }
 
-        $attr = $request->all();
-        $attr['foto'] = $filename;
-        $attr['lat'] = '-3.320363756863717';
-        $attr['long'] = '114.6000705394259';
-
-        Toko::create($attr);
+        $toko->update([
+            'foto' => $filename,
+        ]);
 
         toastr()->success('Sukses Di Simpan');
         return redirect('/superadmin/toko');
@@ -68,12 +86,12 @@ class TokoController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'foto'  => 'mimes:jpg,png,jpeg,bmp|max:5120',
+            'foto'  => 'mimes:jpg,png,jpeg,bmp|max:10240',
         ]);
 
         if ($validator->fails()) {
             $request->flash();
-            toastr()->error('File harus Gambar dan Maks 5MB');
+            toastr()->error('File harus Gambar dan Maks 10MB');
             return back();
         }
 
@@ -82,7 +100,19 @@ class TokoController extends Controller
         } else {
             $extension = $request->foto->getClientOriginalExtension();
             $filename = uniqid() . '.' . $extension;
-            $request->foto->storeAs('/public/', $filename);
+
+            $image = $request->file('foto');
+
+            $realPath = public_path('storage') . '/toko_' . $id . '/real';
+            $compressPath = public_path('storage');
+
+            $img = Image::make($image->path());
+            $img->resize(1000, 1000, function ($const) {
+                $const->aspectRatio();
+            })->save($compressPath . '/' . $filename);
+
+            Storage::disk('public')->move($filename, '/toko_' . $id . '/compress/' . $filename);
+            $image->move($realPath, $filename);
         }
 
         $attr = $request->all();

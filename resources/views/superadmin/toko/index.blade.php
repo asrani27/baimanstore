@@ -27,6 +27,7 @@
                 <th>Nama Toko/Pengrajin</th>
                 <th>Telp</th>
                 <th>Username</th>
+                <th>status</th>
                 <th>Aksi</th>
                 </tr>
             </thead>
@@ -41,13 +42,21 @@
                         @if ($item->foto == null)
                         <img class="direct-chat-img" src="/theme/dist/img/default-150x150.png" alt="message user image">
                         @else
-                        <a href="/storage/{{$item->foto}}" target="_blank"><img class="direct-chat-img" src="/storage/{{$item->foto}}" alt="message user image"></a>
+                        <a href="/storage/toko_{{$item->id}}/compress/{{$item->foto}}" target="_blank"><img class="direct-chat-img" src="/storage/toko_{{$item->id}}/compress/{{$item->foto}}" alt="message user image"></a>
                             
                         @endif
                     </td>
                     <td>{{$item->nama_toko}}</td>
                     <td>{{$item->telp}}</td>
                     <td>{{$item->user == null ? '' : $item->user->username}}</td>
+                    <td>
+                        @if ($item->is_aktif == 0)
+                        <span class="badge badge-danger">tidak aktif</span>
+                        @else
+                        <span class="badge badge-danger"> aktif</span>
+                            
+                        @endif
+                    </td>
                     <td>
                         
                     <form action="/superadmin/toko/{{$item->id}}" method="post">
