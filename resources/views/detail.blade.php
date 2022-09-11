@@ -10,7 +10,7 @@
           <div class="col-12 col-sm-6">
             <h3 class="d-inline-block d-sm-none">{{$produk->nama}}</h3>
             <div class="col-12">
-              <img src="/storage/{{$produk->toko_id}}/{{$produk->foto}}" class="product-image" alt="Product Image">
+              <img src="/storage/toko_{{$produk->toko_id}}/compress/{{$produk->foto}}" class="product-image" alt="Product Image">
             </div>
           </div>
           <div class="col-12 col-sm-6">
@@ -26,15 +26,27 @@
             </div>
 
             <div class="mt-4">
+
+              <a href="/pembeli/masukkankeranjang/{{$produk->id}}" target="_blank">
+                <div class="btn btn-info btn-lg btn-flat">
+                  <i class="fa fa-shopping-cart fa-lg mr-2"></i>
+                  Add To Cart
+                </div>
+                </a>
+
+              <a href="https://wa.me/{{$produk->toko->telp}}?" target="_blank">
               <div class="btn btn-primary btn-lg btn-flat">
-                <i class="fas fa-phone fa-lg mr-2"></i>
+                <i class="fa fa-whatsapp fa-lg mr-2"></i>
                 {{$produk->toko->telp}}
               </div>
+              </a>
 
+              <a href="/pengrajin/produk/{{$produk->toko_id}}">
               <div class="btn btn-default btn-lg btn-flat">
                 <i class="fas fa-user fa-lg mr-2"></i>
                 {{$produk->toko->nama_toko}}
               </div>
+              </a>
             </div>
 
             <div class="mt-4 product-share">
@@ -68,7 +80,7 @@
       <div class="card card-widget widget-user">
         <!-- Add the bg color to the header using any of the bg-* classes -->
         <a href="/produk/{{$item->id}}/detail">
-        <div class="widget-user-header text-white" style="background: url('/storage/{{$item->toko_id}}/{{$item->foto}}') center center; height:160px; background-size:cover;">
+        <div class="widget-user-header text-white" style="background: url('/storage/toko_{{$item->toko_id}}/compress/{{$item->foto}}') center center; height:160px; background-size:cover;">
         </div>
         </a>
         <div class="card-body">

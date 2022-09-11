@@ -79,6 +79,15 @@
                     </div>
                     </div>
 
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Publish</label>
+                        <div class="col-sm-10">
+                            <select name="publish" class="form-control">
+                                <option value="1" selected>YA</option>
+                                <option value="0">Tidak</option>
+                            </select>
+                        </div>
+                    </div>
 
                     <div class="form-group row">
                     <label class="col-sm-2 col-form-label"></label>

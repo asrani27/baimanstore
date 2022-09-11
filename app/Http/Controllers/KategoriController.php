@@ -79,11 +79,12 @@ class KategoriController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'nama' =>  'unique:kategori,nama,' . $id,
+            'foto'  => 'mimes:png|max:1024',
         ]);
 
         if ($validator->fails()) {
             $request->flash();
-            toastr()->error('Kategori sudah ada');
+            toastr()->error('Kategori sudah ada, gambar wajib PNG maks 1MB');
             return back();
         }
         if ($request->foto == null) {

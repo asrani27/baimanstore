@@ -24,6 +24,7 @@
                 <tr>
                 <th>#</th>
                 <th>Nama Kategori</th>
+                <th>Komoditas</th>
                 <th>Aksi</th>
                 </tr>
             </thead>
@@ -35,8 +36,9 @@
                     <tr style="font-size:11px; font-family:Arial, Helvetica, sans-serif">
                     <td>{{$no++}}</td>
                     <td>{{$item->nama}}</td>
+                    <td>{{$item->komoditas}}</td>
                     <td>
-                        
+                       
                     <form action="/superadmin/kategori/{{$item->id}}" method="post">
                         <a href="/superadmin/kategori/{{$item->id}}/edit" class="btn btn-xs btn-success"><i class="fas fa-edit"></i> Edit</a>
                         @csrf

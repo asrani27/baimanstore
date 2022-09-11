@@ -78,6 +78,8 @@ Route::group(['middleware' => ['auth', 'role:pembeli']], function () {
         Route::post('gantipass', [GantiPassController::class, 'resetpass']);
         Route::post('profil', [GantiPassController::class, 'profil']);
         Route::get('keranjangsaya', [KeranjangController::class, 'index']);
+        Route::get('masukkankeranjang/{id}', [KeranjangController::class, 'addToCart']);
+        Route::post('keranjangsaya/update', [KeranjangController::class, 'update']);
     });
 });
 

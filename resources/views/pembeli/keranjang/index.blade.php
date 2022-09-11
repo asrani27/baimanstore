@@ -9,7 +9,7 @@
 @section('content')
 <div class="row">
     <div class="col-12">
-        <a href="/penjual/keranjangsaya/create" class="btn btn-sm bg-gradient-purple"><i class="fas fa-plus"></i> Tambah Belanja</a>
+        <a href="/" class="btn btn-sm bg-gradient-purple"><i class="fas fa-plus"></i> Tambah Belanja</a>
         <br/><br/>
         <div class="card">
         <div class="card-header">
@@ -23,11 +23,12 @@
             <thead>
                 <tr>
                 <th>#</th>
-                <th>Gambar</th>
+                <th>Tanggal</th>
+                <th>Toko</th>
                 <th>Nama Produk</th>
                 <th>Harga</th>
-                <th>Toko</th>
-                <th>Tanggal</th>
+                <th>Jumlah</th>
+                <th>Total</th>
                 <th>Aksi</th>
                 </tr>
             </thead>
@@ -38,23 +39,36 @@
             @foreach ($data as $key => $item)
                     <tr style="font-size:12px; font-family:Arial, Helvetica, sans-serif">
                     <td>{{$no++}}</td>
-                    <td>{{$item->nama}}</td>
-                    {{-- <td>Rp. {{number_format($item->harga)}}</td>
-                    <td>{{$item->toko->nama_toko}}</td>
-                    <td>{{\Carbon\Carbon::parse($item->created_at)->format('d-m-Y')}}</td>
+                    <td>{{$item->created_at}}</td>
+                    <td>{{$item->produk->toko->nama_toko}}</td>
+                    <td>{{$item->produk->nama}}</td>
+                    <td>{{number_format($item->harga)}}</td>
                     <td>
-                        
-                    <form action="/penjual/produksaya/{{$item->id}}" method="post">
-                        <a href="/penjual/produksaya/{{$item->id}}/edit" class="btn btn-xs btn-success"><i class="fas fa-edit"></i> Edit</a>
-                        @csrf
-                        @method('delete')
-                        <button type="submit" class="btn btn-xs btn-danger" onclick="return confirm('yakin DI Hapus?');"><i class="fas fa-trash"></i> Delete</button>     
-                    </form> --}}
+                        {{$item->jumlah}}
 
+                        <a href="#" class="btn btn-xs edit-jumlah" data-id="{{$item->id}}"
+                            data-jumlah="{{$item->jumlah}}">
+                            <i class="fas fa-edit text-primary"></i></a>
+                    </td>
+                    <td>{{number_format($item->total)}}</td>
+                    <td>
+                        <a href="/pembeli/keranjangsaya/{{$item->id}}/delete" class="btn btn-xs btn-danger"><i class="fas fa-trash"></i></a>
                     </td>
                     </tr>
                 @endforeach
             </tbody>
+            <tfoot>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Grand Total</td>
+                    <td>{{$data->sum('jumlah')}}</td>
+                    <td>{{number_format($data->sum('total'))}}</td>
+                    <td></td>
+                </tr>
+            </tfoot>
             </table>
         </div>
         <!-- /.card-body -->
@@ -62,7 +76,44 @@
     </div>
 </div>
 
+
+<div class="modal fade" id="modal-edit" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post" action="/pembeli/keranjangsaya/update" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-header bg-gradient-primary" style="padding:10px">
+                    <h4 class="modal-title text-sm">EDIT JUMLAH</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Jumlah Item</label>
+                        <input type="text" class="form-control" id="jumlah" name="jumlah" required>
+                        <input type="hidden" class="form-control" id="keranjang_id" name="keranjang_id" readonly>
+                    </div>
+                </div>
+
+                <div class="modal-footer justify-content-between">
+                    <button type="submit" class="btn btn-block btn-primary"><i class="fas fa-paper-plane"></i>
+                        Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 @endsection
 
 @push('js')
+
+<script>
+    $(document).on('click', '.edit-jumlah', function() {
+   $('#keranjang_id').val($(this).data('id'));
+   $('#jumlah').val($(this).data('jumlah'));
+   $("#modal-edit").modal();
+});
+</script>
 @endpush

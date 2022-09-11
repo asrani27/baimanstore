@@ -87,7 +87,7 @@
         @if ($item->foto == null)
         <img src="https://sosialita.tanahlautkab.go.id/assets/uploads/kategoriproduksub/pbf9Kgut20210713103513.png" alt="User Image">
         @else
-            <img src="/storage/kategori/compress/{{$item->foto}}">
+        <img src="/storage/kategori/compress/{{$item->foto}}" width="80%;">
         @endif
         <p style="font-size: 10px;">{{Str::limit($item->nama, 20)}}
           @if (Str::length($item->nama) < 13)
@@ -150,7 +150,7 @@
     <div class="card card-widget widget-user">
       <!-- Add the bg color to the header using any of the bg-* classes -->
       <a href="/produk/{{$item->id}}/detail">
-      <div class="widget-user-header text-white" style="background: url('/storage/{{$item->toko_id}}/{{$item->foto}}') center center; height:160px; background-size:cover;">
+      <div class="widget-user-header text-white" style="background: url('/storage/toko_{{$item->toko_id}}/compress/{{$item->foto}}') center center; height:160px; background-size:cover;">
       </div>
       </a>
       <div class="card-body">

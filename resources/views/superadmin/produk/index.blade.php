@@ -27,6 +27,7 @@
                 <th>Nama Produk</th>
                 <th>Harga</th>
                 <th>Toko</th>
+                <th>Publish</th>
                 <th>Aksi</th>
                 </tr>
             </thead>
@@ -41,13 +42,20 @@
                         @if ($item->foto == null)
                         <img class="direct-chat-img" src="/theme/dist/img/default-150x150.png" alt="message user image">
                         @else
-                        <a href="/storage/{{$item->foto}}" target="_blank"><img class="direct-chat-img" src="/storage/{{$item->toko_id}}/{{$item->foto}}" alt="message user image"></a>
+                        <a href="/storage/toko_{{$item->toko_id}}/compress/{{$item->foto}}" target="_blank"><img class="direct-chat-img" src="/storage/toko_{{$item->toko_id}}/compress/{{$item->foto}}" alt="message user image"></a>
                             
                         @endif
                     </td>
                     <td>{{$item->nama}}</td>
                     <td>Rp. {{number_format($item->harga)}}</td>
                     <td>{{$item->toko->nama_toko}}</td>
+                    <td>
+                        @if ($item->publish == 0)
+                            <span class="badge badge-danger">Tidak</span>
+                        @else
+                            <span class="badge badge-success">Ya</span>
+                        @endif    
+                        </td>
                     <td>
                         
                     <form action="/superadmin/produk/{{$item->id}}" method="post">

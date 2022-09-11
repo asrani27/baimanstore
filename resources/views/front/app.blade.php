@@ -7,6 +7,7 @@
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <link rel="stylesheet" href="/theme/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="/theme/dist/css/adminlte.min.css"> 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
@@ -56,16 +57,32 @@
             <a href="/kontak" class="nav-link"><i class="fas fa-phone"></i> Kontak</a>
           </li>
           
+          @if (!Auth::check()) 
           <li class="nav-item">
             <a href="/login" class="nav-link"><i class="fas fa-sign-in-alt"></i> Login</a>
           </li>
           <li class="nav-item">
             <a href="/daftar" class="nav-link"><i class="fas fa-edit"></i> Daftar</a>
           </li>
-        </ul>
+          @endif
 
+        </ul>
       </div>
       
+      @if (Auth::check())
+      <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/pembeli/home" role="button">
+            <i class="fa fa-user"></i> {{Auth::user()->name}}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout" role="button">
+            <i class="fa fa-sign-out"></i>
+          </a>
+        </li>
+      </ul>
+      @endif
     </div>
   </nav>
   <!-- /.navbar -->
