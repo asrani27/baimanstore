@@ -103,7 +103,7 @@ class ProdukController extends Controller
 
             $image = $request->file('foto');
 
-            $realPath = public_path('storage') . '/toko_' . $toko_id . '/real';
+            $realPath = public_path('storage') . '/toko_' . $request->toko_id . '/real';
             $compressPath = public_path('storage');
 
             $img = Image::make($image->path());
@@ -111,7 +111,7 @@ class ProdukController extends Controller
                 $const->aspectRatio();
             })->save($compressPath . '/' . $filename);
 
-            Storage::disk('public')->move($filename, '/toko_' . $toko_id . '/compress/' . $filename);
+            Storage::disk('public')->move($filename, '/toko_' . $request->toko_id . '/compress/' . $filename);
             $image->move($realPath, $filename);
         }
 

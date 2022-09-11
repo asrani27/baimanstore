@@ -47,4 +47,11 @@ class KeranjangController extends Controller
         toastr()->success('Jumlah Berhasil Di Update');
         return redirect('/pembeli/keranjangsaya');
     }
+
+    public function delete($id)
+    {
+        $data = keranjang::find($id)->delete();
+        toastr()->success('Berhasil Di Hapus');
+        return back();
+    }
 }

@@ -19,6 +19,14 @@
         </li>
     
         <li class="nav-item">
+            <a href="/pembeli/riwayatbelanja" class="nav-link {{Request::is('pembeli/riwayatbelanja') ? 'active' : ''}}">
+                <i class="nav-icon fa fa-th"></i>
+                <p>
+                Riwayat Belanja
+                </p>
+            </a>
+            </li>
+        <li class="nav-item">
         <a href="/pembeli/gantipass" class="nav-link {{Request::is('pembeli/gantipass') ? 'active' : ''}}">
             <i class="nav-icon fas fa-key"></i>
             <p>

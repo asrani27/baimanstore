@@ -68,6 +68,18 @@
                     <td>{{number_format($data->sum('total'))}}</td>
                     <td></td>
                 </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <a href="/checkout" class="btn btn-sm btn-success"> Checkout <i class="fas fa-arrow-right"></i></a>
+                    </td>
+                    <td></td>
+                </tr>
             </tfoot>
             </table>
         </div>
