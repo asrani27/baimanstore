@@ -52,7 +52,7 @@
                     </td>
                     <td>{{number_format($item->total)}}</td>
                     <td>
-                        <a href="/pembeli/keranjangsaya/{{$item->id}}/delete" class="btn btn-xs btn-danger"><i class="fas fa-trash"></i></a>
+                        <a href="/pembeli/keranjangsaya/{{$item->id}}/delete" class="btn btn-xs btn-danger" onclick="return confirm('Yakin Ingin Di Hapus?');"><i class="fas fa-trash"></i></a>
                     </td>
                     </tr>
                 @endforeach
@@ -76,7 +76,7 @@
                     <td></td>
                     <td></td>
                     <td>
-                        <a href="/checkout" class="btn btn-sm btn-success"> Checkout <i class="fas fa-arrow-right"></i></a>
+                        <a href="/pembeli/checkout" class="btn btn-sm btn-success"> Checkout <i class="fas fa-arrow-right"></i></a>
                     </td>
                     <td></td>
                 </tr>

@@ -20,6 +20,7 @@ use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\ProdukSayaController;
 use App\Http\Controllers\PersyaratanController;
+use App\Http\Controllers\RiwayatBelanjaController;
 
 Route::get('/', [HomeController::class, 'welcome']);
 Route::get('/tentangkami', [HomeController::class, 'tentang']);
@@ -81,6 +82,11 @@ Route::group(['middleware' => ['auth', 'role:pembeli']], function () {
         Route::get('keranjangsaya/{id}/delete', [KeranjangController::class, 'delete']);
         Route::get('masukkankeranjang/{id}', [KeranjangController::class, 'addToCart']);
         Route::post('keranjangsaya/update', [KeranjangController::class, 'update']);
+
+        Route::get('checkout', [KeranjangController::class, 'checkout']);
+
+        Route::get('riwayatbelanja', [RiwayatBelanjaController::class, 'index']);
+        Route::get('riwayatbelanja/{id}/detail', [RiwayatBelanjaController::class, 'detail']);
     });
 });
 

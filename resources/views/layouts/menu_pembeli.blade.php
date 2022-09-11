@@ -10,7 +10,7 @@
         </a>
         </li>
         <li class="nav-item">
-        <a href="/pembeli/keranjangsaya" class="nav-link {{Request::is('pembeli/keranjangsaya') ? 'active' : ''}}">
+        <a href="/pembeli/keranjangsaya" class="nav-link {{Request::is('pembeli/keranjangsaya*') ? 'active' : ''}}">
             <i class="nav-icon fa fa-shopping-cart"></i>
             <p>
             Keranjang Belanja
@@ -19,7 +19,7 @@
         </li>
     
         <li class="nav-item">
-            <a href="/pembeli/riwayatbelanja" class="nav-link {{Request::is('pembeli/riwayatbelanja') ? 'active' : ''}}">
+            <a href="/pembeli/riwayatbelanja" class="nav-link {{Request::is('pembeli/riwayatbelanja*') ? 'active' : ''}}">
                 <i class="nav-icon fa fa-th"></i>
                 <p>
                 Riwayat Belanja

@@ -22,7 +22,7 @@ Beranda
 
         <div class="info-box-content">
           <span class="info-box-text">Keranjang Saya</span>
-          <span class="info-box-number">23</span>
+          <span class="info-box-number">0</span>
 
           <div class="progress">
             <div class="progress-bar" style="width: 70%"></div>
@@ -39,7 +39,7 @@ Beranda
 
         <div class="info-box-content">
           <span class="info-box-text">Total Belanja</span>
-          <span class="info-box-number">Rp., 5.000.988.888</span>
+          <span class="info-box-number">0</span>
 
           <div class="progress">
             <div class="progress-bar" style="width: 70%"></div>
