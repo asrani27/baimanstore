@@ -25,6 +25,7 @@
                 <th>Toko</th>
                 <th>Pembeli</th>
                 <th>Total</th>
+                <th>Nota</th>
                 <th>Status</th>
                 <th>Aksi</th>
                 </tr>
@@ -41,6 +42,13 @@
                     <td>{{$item->pembeli->nama}}</td>
                     <td>{{number_format($item->total)}}</td>
                     <td>
+                    @if ($item->upload == null)
+                        -
+                    @else
+                        <a href="/storage/nota/compress/{{$item->upload}}" target="_blank"><i class="fa fa-download"></i></a>
+                    @endif    
+                    </td>
+                    <td>
                         @if ($item->status == 0)
                             Di Proses
                         @elseif($item->status == 1)
@@ -51,7 +59,7 @@
                     </td>
                     <td>
                         <a href="/pembeli/riwayatbelanja/{{$item->id}}/detail" class="btn btn-xs btn-primary">Detail</a>
-                        <a href="/pembeli/riwayatbelanja/{{$item->id}}/upload" class="btn btn-xs btn-primary">Upload</a>
+                        <a href="#" class="btn btn-xs btn-primary upload-nota" data-id="{{$item->id}}">Upload</a>
                     </td>
                 
                     </tr>
@@ -67,8 +75,42 @@
 
 
 
+<div class="modal fade" id="modal-edit" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post" action="/pembeli/uploadnota" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-header bg-gradient-primary" style="padding:10px">
+                    <h4 class="modal-title text-sm">UPLOAD NOTA</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>File</label>
+                        <input type="file" class="form-control" name="file" required>
+                        <input type="hidden" class="form-control" id="penjualan_id" name="penjualan_id" readonly>
+                    </div>
+                </div>
+
+                <div class="modal-footer justify-content-between">
+                    <button type="submit" class="btn btn-block btn-primary"><i class="fas fa-paper-plane"></i>
+                        Upload</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 @endsection
 
 @push('js')
 
+<script>
+    $(document).on('click', '.upload-nota', function() {
+   $('#penjualan_id').val($(this).data('id'));
+   $("#modal-edit").modal();
+});
+</script>
 @endpush

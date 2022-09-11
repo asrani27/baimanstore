@@ -87,6 +87,9 @@ Route::group(['middleware' => ['auth', 'role:pembeli']], function () {
 
         Route::get('riwayatbelanja', [RiwayatBelanjaController::class, 'index']);
         Route::get('riwayatbelanja/{id}/detail', [RiwayatBelanjaController::class, 'detail']);
+
+
+        Route::post('uploadnota', [RiwayatBelanjaController::class, 'uploadnota']);
     });
 });
 
