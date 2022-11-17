@@ -35,6 +35,13 @@ class RiwayatBelanjaController extends Controller
         return view('pembeli.belanja.detail', compact('data'));
     }
 
+    public function diterima($id)
+    {
+        $data = Penjualan::find($id)->update(['status' => 1]);
+        toastr()->success('Pesanan Diterima');
+        return back();
+    }
+
     public function uploadnota(Request $req)
     {
 

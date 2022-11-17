@@ -88,6 +88,7 @@ Route::group(['middleware' => ['auth', 'role:pembeli']], function () {
 
         Route::get('riwayatbelanja', [RiwayatBelanjaController::class, 'index']);
         Route::get('riwayatbelanja/{id}/detail', [RiwayatBelanjaController::class, 'detail']);
+        Route::get('riwayatbelanja/{id}/diterima', [RiwayatBelanjaController::class, 'diterima']);
 
 
         Route::post('uploadnota', [RiwayatBelanjaController::class, 'uploadnota']);
@@ -101,6 +102,7 @@ Route::group(['middleware' => ['auth', 'role:penjual']], function () {
         Route::post('profil', [GantiPassController::class, 'profil']);
         Route::resource('produksaya', ProdukSayaController::class);
         Route::get('pesanan', [PesananController::class, 'index']);
+        Route::post('uploadnota', [PesananController::class, 'uploadnota']);
     });
 });
 

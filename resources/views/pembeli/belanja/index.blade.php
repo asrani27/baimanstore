@@ -64,6 +64,7 @@
                         @endif
                     </td>
                     <td>
+                        <a href="/pembeli/riwayatbelanja/{{$item->id}}/diterima" class="btn btn-xs btn-primary"  onclick="return confirm('yakin di pesanan anda sudah diterima?');">Diterima</a>
                         <a href="/pembeli/riwayatbelanja/{{$item->id}}/detail" class="btn btn-xs btn-primary">Detail</a>
                         <a href="#" class="btn btn-xs btn-primary upload-nota" data-id="{{$item->id}}">Upload</a>
                     </td>
