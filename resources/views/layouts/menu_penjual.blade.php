@@ -19,6 +19,18 @@
     </li>
 
     <li class="nav-item">
+        <a href="/penjual/pesanan" class="nav-link {{Request::is('penjual/pesanan') ? 'active' : ''}}">
+            <i class="nav-icon fa fa-th"></i>
+            <p>
+            Pesanan Masuk
+            </p>
+            @if (pesananMasuk() != 0)
+                
+            <span class="right badge badge-danger">{{pesananMasuk()}}</span>
+            @endif
+        </a>
+    </li>
+    <li class="nav-item">
     <a href="/penjual/gantipass" class="nav-link {{Request::is('penjual/gantipass') ? 'active' : ''}}">
         <i class="nav-icon fas fa-key"></i>
         <p>

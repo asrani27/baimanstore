@@ -104,6 +104,7 @@ class KeranjangController extends Controller
                 $dp->deskripsi = $item->produk->deskripsi;
                 $dp->harga = $item->produk->harga;
                 $dp->jumlah = $item->jumlah;
+                $dp->total = $item->total;
                 $dp->save();
             }
 

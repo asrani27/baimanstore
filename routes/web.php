@@ -14,6 +14,7 @@ use App\Http\Controllers\UploadController;
 use App\Http\Controllers\BiodataController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\PesananController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\GantiPassController;
 use App\Http\Controllers\KeranjangController;
@@ -99,6 +100,7 @@ Route::group(['middleware' => ['auth', 'role:penjual']], function () {
         Route::post('gantipass', [GantiPassController::class, 'resetpass']);
         Route::post('profil', [GantiPassController::class, 'profil']);
         Route::resource('produksaya', ProdukSayaController::class);
+        Route::get('pesanan', [PesananController::class, 'index']);
     });
 });
 

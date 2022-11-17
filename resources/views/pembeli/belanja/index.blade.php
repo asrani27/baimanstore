@@ -23,8 +23,8 @@
                 <th>#</th>
                 <th>Tanggal</th>
                 <th>Toko</th>
-                <th>Pembeli</th>
                 <th>Total</th>
+                <th>Bukti Pembayaran</th>
                 <th>Nota</th>
                 <th>Status</th>
                 <th>Aksi</th>
@@ -39,7 +39,6 @@
                     <td>{{$no++}}</td>
                     <td>{{$item->created_at}}</td>
                     <td>{{$item->toko->nama_toko}}</td>
-                    <td>{{$item->pembeli->nama}}</td>
                     <td>{{number_format($item->total)}}</td>
                     <td>
                     @if ($item->upload == null)
@@ -49,12 +48,19 @@
                     @endif    
                     </td>
                     <td>
+                    @if ($item->nota == null)
+                        -
+                    @else
+                        <a href="/storage/nota/compress/{{$item->nota}}" target="_blank"><i class="fa fa-download"></i></a>
+                    @endif    
+                    </td>
+                    <td>
                         @if ($item->status == 0)
-                            Di Proses
+                            <span class="badge badge-info">Di Proses</span>
                         @elseif($item->status == 1)
-                            Selesai
+                            <span class="badge badge-success">Di terima</span>
                         @else
-                            Di Batalkan
+                            <span class="badge badge-danger">Di Batalkan</span>
                         @endif
                     </td>
                     <td>
@@ -81,7 +87,7 @@
             <form method="post" action="/pembeli/uploadnota" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-header bg-gradient-primary" style="padding:10px">
-                    <h4 class="modal-title text-sm">UPLOAD NOTA</h4>
+                    <h4 class="modal-title text-sm">UPLOAD BUKTI PEMBAYARAN</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>

@@ -10,7 +10,7 @@
           <div class="col-12 col-sm-6">
             <h3 class="d-inline-block d-sm-none">{{$produk->nama}}</h3>
             <div class="col-12">
-              <img src="/storage/toko_{{$produk->toko_id}}/compress/{{$produk->foto}}" class="product-image" alt="Product Image">
+              <img src="/storage/toko_{{$produk->toko_id}}/compress/{{$produk->foto}}" class="product-image">
             </div>
           </div>
           <div class="col-12 col-sm-6">
