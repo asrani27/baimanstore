@@ -13,8 +13,9 @@ class PesananController extends Controller
 {
     public function index()
     {
-        $data = Penjualan::where('toko_id', Auth::user()->toko->id)->orderBy('status', 'ASC')->paginate(10);
 
+        $data = Penjualan::where('toko_id', Auth::user()->toko->id)->orderBy('status', 'ASC')->paginate(10);
+        dd($data);
 
         return view('penjual.pesanan.index', compact('data'));
     }
