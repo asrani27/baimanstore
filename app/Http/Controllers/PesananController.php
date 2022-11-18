@@ -15,7 +15,7 @@ class PesananController extends Controller
     {
 
         $data = Penjualan::where('toko_id', Auth::user()->toko->id)->orderBy('status', 'ASC')->paginate(10);
-        dd($data);
+        //dd($data);
 
         return view('penjual.pesanan.index', compact('data'));
     }
