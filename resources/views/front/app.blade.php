@@ -165,7 +165,7 @@
     <br/>
     <div class="row text-center">
       <div class="col-md-12">
-        <strong>PEMMERINTAH KABUPATEN KAPUAS</strong> 
+        <strong>PEMERINTAH KABUPATEN KAPUAS</strong> 
       </div>
     </div>
     </div>
