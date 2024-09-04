@@ -42,6 +42,13 @@ class RiwayatBelanjaController extends Controller
         return back();
     }
 
+    public function berirating(Request $req)
+    {
+        Penjualan::find($req->penjualan_id)->update([
+            'rating' => $req->rating,
+        ]);
+        return back();
+    }
     public function uploadnota(Request $req)
     {
 
