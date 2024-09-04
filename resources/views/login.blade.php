@@ -43,12 +43,15 @@
             </div>
           </div>
         </div>
-        <div class="row">
+        <div class="row text-center">
           <div class="col-6">
             <button type="submit" class="btn btn-primary btn-block">Masuk</button>
           </div>
           <div class="col-6">
             <a href="/register" class="btn btn-danger btn-block">Daftar</a>
+          </div>
+          <div class="col-12">  
+            <a href="/"><strong>Ke Beranda</strong></a>
           </div>
         </div>
       </form>
