@@ -69,7 +69,7 @@
         </div>
         <div class="row">
           <div class="col-12 text-center">
-            <button type="submit"  class="btn btn-danger btn-block">Register</button>
+            <button type="submit"  class="btn btn-danger btn-block">Daftar</button>
             <strong>sudah punya akun ? <a href="/login">login disini</a></strong>
           </div>
         </div>

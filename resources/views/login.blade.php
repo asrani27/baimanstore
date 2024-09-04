@@ -45,10 +45,10 @@
         </div>
         <div class="row">
           <div class="col-6">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            <button type="submit" class="btn btn-primary btn-block">Masuk</button>
           </div>
           <div class="col-6">
-            <a href="/register" class="btn btn-danger btn-block">Register</a>
+            <a href="/register" class="btn btn-danger btn-block">Daftar</a>
           </div>
         </div>
       </form>
