@@ -99,7 +99,7 @@ Route::group(['middleware' => ['auth', 'role:user']], function () {
         Route::get('riwayatbelanja/{id}/diterima', [RiwayatBelanjaController::class, 'diterima']);
 
 
-        Route::post('uploadnota', [RiwayatBelanjaController::class, 'uploadnota']);
+        Route::post('uploadnotabeli', [RiwayatBelanjaController::class, 'uploadnota']);
 
         //penjualan
         Route::resource('produksaya', ProdukSayaController::class);

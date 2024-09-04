@@ -85,10 +85,10 @@
 <div class="modal fade" id="modal-edit" style="display: none;" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form method="post" action="/user/uploadnota" enctype="multipart/form-data">
+            <form method="post" action="/user/uploadnotabeli" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-header bg-gradient-primary" style="padding:10px">
-                    <h4 class="modal-title text-sm">UPLOAD BUKTI PEMBAYARAN</h4>
+                    <h4 class="modal-title text-sm">UPLOAD BUKTI PEMBAYARAN.</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
