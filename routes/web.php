@@ -47,8 +47,8 @@ Route::get('/login', function () {
     if (Auth::check()) {
         if (Auth::user()->hasRole('superadmin')) {
             return redirect('/superadmin/home');
-        } elseif (Auth::user()->hasRole('pembeli')) {
-            return redirect('/pembeli/home');
+        } elseif (Auth::user()->hasRole('user')) {
+            return redirect('/user/home');
         } elseif (Auth::user()->hasRole('penjual')) {
             return redirect('/penjual/home');
         }
