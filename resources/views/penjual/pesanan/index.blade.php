@@ -26,7 +26,7 @@
                 <th>Detail Barang Yang Di beli</th>
                 <th>Total</th>
                 <th>Bukti Pembayaran</th>
-                <th>Nota</th>
+                <th>Resi Pengiriman</th>
                 <th>Status</th>
                 </tr>
             </thead>
@@ -53,11 +53,11 @@
                         @endif    
                         </td>
                         <td>
-                        @if ($item->nota == null)
-                            -
-                        @else
-                            <a href="/storage/nota/compress/{{$item->nota}}" target="_blank"><i class="fa fa-download"></i></a>
-                        @endif    
+                            @if ($item->jasa == null)
+                                -
+                            @else
+                                {{$item->jasa}} - {{$item->resi}}  
+                            @endif
                         </td>
                     <td>
                     @if ($item->status == 0)
@@ -65,16 +65,16 @@
                     @elseif($item->status == 1)
                         <span class="badge badge-success">Selesai</span>
                     @else
-                        <span class="badge badge-danger">Cancel</span>
-
                     @endif    
                     </td>
                     <td>
-                        
                         <a href="#" class="btn btn-xs btn-primary upload-nota" data-id="{{$item->id}}"><i class="fas fa-upload"></i> Input Nomor Resi</a>
-                        
                         @if($item->status != 1)
-                        <a href="/penjual/pesanan/{{$item->id}}/cancel" class="btn btn-xs btn-danger" onclick="return confirm('yakin di cancel?');"><i class="fas fa-trash"></i> Cancel</button>    
+                            @if ($item->jasa != null)
+                                
+                            @else
+                                <a href="/penjual/pesanan/{{$item->id}}/cancel" class="btn btn-xs btn-danger" onclick="return confirm('yakin di cancel?');"><i class="fas fa-trash"></i> Cancel</button>   
+                            @endif 
                         @endif 
                     
                     </td>
