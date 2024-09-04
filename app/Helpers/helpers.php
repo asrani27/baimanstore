@@ -16,6 +16,28 @@ function listSyarat($persyaratan_id)
     return Upload::whereIn('id', $id)->get();
 }
 
+function rating($rating)
+{
+    if ($rating == 0) {
+        return '<img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png">';
+    }
+    if ($rating == 1) {
+        return '<img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png">';
+    }
+    if ($rating == 0) {
+        return '<img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png">';
+    }
+    if ($rating == 0) {
+        return '<img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png">';
+    }
+    if ($rating == 0) {
+        return '<img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png">';
+    }
+    if ($rating == 0) {
+        return '<img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png">';
+    }
+}
+
 function keranjangSaya($user)
 {
     return Keranjang::where('pembeli_id', $user->pembeli->id)->sum('jumlah');

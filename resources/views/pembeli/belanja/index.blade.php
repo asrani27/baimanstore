@@ -59,7 +59,7 @@
                             <span class="badge badge-info">Di Proses</span>
                         @elseif($item->status == 1)
                             <span class="badge badge-success">Di terima</span>
-                            <img src="/star/on.png"><img src="/star/off.png">
+                            {!!rating($item->rating)!!}
                         @else
                             <span class="badge badge-danger">Di Batalkan</span>
                         @endif
@@ -116,7 +116,7 @@
 
                 <div class="modal-footer justify-content-between">
                     <button type="submit" class="btn btn-block btn-primary"><i class="fas fa-paper-plane"></i>
-                        Upload</button>
+                        Kirim</button>
                 </div>
             </form>
         </div>
