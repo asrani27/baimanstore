@@ -9,7 +9,7 @@
 @section('content')
 <div class="row">
     <div class="col-12">
-        <a href="/penjual/produksaya/create" class="btn btn-sm bg-gradient-purple"><i class="fas fa-plus"></i> Tambah</a>
+        <a href="/user/produksaya/create" class="btn btn-sm bg-gradient-purple"><i class="fas fa-plus"></i> Tambah</a>
         <br/><br/>
         <div class="card">
         <div class="card-header">
@@ -60,8 +60,8 @@
                     </td>
                     <td>
                         
-                    <form action="/penjual/produksaya/{{$item->id}}" method="post">
-                        <a href="/penjual/produksaya/{{$item->id}}/edit" class="btn btn-xs btn-success"><i class="fas fa-edit"></i> Edit</a>
+                    <form action="/user/produksaya/{{$item->id}}" method="post">
+                        <a href="/user/produksaya/{{$item->id}}/edit" class="btn btn-xs btn-success"><i class="fas fa-edit"></i> Edit</a>
                         @csrf
                         @method('delete')
                         <button type="submit" class="btn btn-xs btn-danger" onclick="return confirm('yakin DI Hapus?');"><i class="fas fa-trash"></i> Delete</button>     

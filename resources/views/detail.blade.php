@@ -27,7 +27,7 @@
 
             <div class="mt-4">
 
-              <a href="/pembeli/masukkankeranjang/{{$produk->id}}" target="_blank">
+              <a href="/user/masukkankeranjang/{{$produk->id}}" target="_blank">
                 <div class="btn btn-info btn-lg btn-flat">
                   <i class="fa fa-shopping-cart fa-lg mr-2"></i>
                   Add To Cart

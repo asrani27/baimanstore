@@ -36,12 +36,12 @@ class KeranjangController extends Controller
             $k->jumlah = 1;
             $k->save();
             toastr()->success('Produk Sudah Ditambah');
-            return redirect('/pembeli/keranjangsaya');
+            return back();
         } else {
             $toko = Produk::find($id)->toko;
             if ($toko->id != $check->produk->toko->id) {
                 toastr()->error('Gagal Di Tambah, produk ini di toko ' . $toko->nama_toko . ' anda hanya bisa beli di 1 toko yang sama untuk 1 keranjang');
-                return redirect('/pembeli/keranjangsaya');
+                return back();
             } else {
                 $checkProduk = Keranjang::where('pembeli_id', $pembeli_id)->where('produk_id', $id)->first();
 
@@ -52,10 +52,10 @@ class KeranjangController extends Controller
                     $k->jumlah = 1;
                     $k->save();
                     toastr()->success('Produk Sudah Ditambah');
-                    return redirect('/pembeli/keranjangsaya');
+                    return back();
                 } else {
                     toastr()->error('Produk Sudah Ada');
-                    return redirect('/pembeli/keranjangsaya');
+                    return back();
                 }
             }
         }
@@ -67,7 +67,25 @@ class KeranjangController extends Controller
             'jumlah' => $req->jumlah
         ]);
         toastr()->success('Jumlah Berhasil Di Update');
-        return redirect('/pembeli/keranjangsaya');
+        return redirect('/user/keranjangsaya');
+    }
+
+    public function minus($id)
+    {
+        $data = keranjang::find($id);
+        $data->jumlah = $data->jumlah - 1;
+        $data->save();
+        toastr()->success('Jumlah Berhasil Di Update');
+        return redirect('/user/keranjangsaya');
+    }
+
+    public function plus($id)
+    {
+        $data = keranjang::find($id);
+        $data->jumlah = $data->jumlah + 1;
+        $data->save();
+        toastr()->success('Jumlah Berhasil Di Update');
+        return redirect('/user/keranjangsaya');
     }
 
     public function delete($id)
@@ -116,7 +134,7 @@ class KeranjangController extends Controller
             DB::commit();
 
             toastr()->success('Sukses Di Simpan');
-            return redirect('/pembeli/riwayatbelanja');
+            return redirect('/user/riwayatbelanja');
         } catch (\Exception $e) {
 
             DB::rollback();

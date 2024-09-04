@@ -23,7 +23,7 @@
       <a href="/" class="h1">IKM KAPUAS</a>
     </div>
     <div class="card-body">
-      <p class="login-box-msg">Daftar Akun IKM</p>
+      <p class="login-box-msg">Daftar Akun Industri Kecil Menengah</p>
 
       <form class="form" action="/register" method="post">
         @csrf

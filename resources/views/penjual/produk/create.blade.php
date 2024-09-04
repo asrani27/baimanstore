@@ -12,8 +12,8 @@
 @section('content')
 <div class="row">
     <div class="col-12">
-        <a href="/penjual/produksaya" class="btn btn-sm btn-secondary"><i class="fas fa-arrow-left"></i> Kembali</a><br/><br/>
-<form method="post" action="/penjual/produksaya" enctype="multipart/form-data">
+        <a href="/user/produksaya" class="btn btn-sm btn-secondary"><i class="fas fa-arrow-left"></i> Kembali</a><br/><br/>
+<form method="post" action="/user/produksaya" enctype="multipart/form-data">
     @csrf
     <div class="row">
         <div class="col-lg-12 col-12">

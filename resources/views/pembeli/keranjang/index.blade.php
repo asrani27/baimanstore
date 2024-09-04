@@ -44,15 +44,22 @@
                     <td>{{$item->produk->nama}}</td>
                     <td>{{number_format($item->harga)}}</td>
                     <td>
+                        @if ($item->jumlah == 1)
+                        <a href="#" class="btn btn-xs">
+                            <i class="fas fa-minus text-primary"></i></a>
+                            @else
+                            <a href="/user/keranjangsaya/{{$item->id}}/minus" class="btn btn-xs">
+                                <i class="fas fa-minus text-primary"></i></a>
+                        @endif
+
                         {{$item->jumlah}}
 
-                        <a href="#" class="btn btn-xs edit-jumlah" data-id="{{$item->id}}"
-                            data-jumlah="{{$item->jumlah}}">
-                            <i class="fas fa-edit text-primary"></i></a>
+                        <a href="/user/keranjangsaya/{{$item->id}}/plus" class="btn btn-xs">
+                            <i class="fas fa-plus text-primary"></i></a>
                     </td>
                     <td>{{number_format($item->total)}}</td>
                     <td>
-                        <a href="/pembeli/keranjangsaya/{{$item->id}}/delete" class="btn btn-xs btn-danger" onclick="return confirm('Yakin Ingin Di Hapus?');"><i class="fas fa-trash"></i></a>
+                        <a href="/user/keranjangsaya/{{$item->id}}/delete" class="btn btn-xs btn-danger" onclick="return confirm('Yakin Ingin Di Hapus?');"><i class="fas fa-trash"></i></a>
                     </td>
                     </tr>
                 @endforeach

@@ -73,7 +73,7 @@
                             @if ($item->jasa != null)
                                 
                             @else
-                                <a href="/penjual/pesanan/{{$item->id}}/cancel" class="btn btn-xs btn-danger" onclick="return confirm('yakin di cancel?');"><i class="fas fa-trash"></i> Cancel</button>   
+                                <a href="/user/pesanan/{{$item->id}}/cancel" class="btn btn-xs btn-danger" onclick="return confirm('yakin di cancel?');"><i class="fas fa-trash"></i> Cancel</button>   
                             @endif 
                         @endif 
                     
@@ -92,7 +92,7 @@
 <div class="modal fade" id="modal-edit" style="display: none;" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form method="post" action="/penjual/nomorresi" enctype="multipart/form-data">
+            <form method="post" action="/user/nomorresi" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-header bg-gradient-primary" style="padding:10px">
                     <h4 class="modal-title text-sm">MASUKKAN NO RESI</h4>

@@ -86,6 +86,8 @@ Route::group(['middleware' => ['auth', 'role:user']], function () {
         Route::post('profil', [GantiPassController::class, 'profil']);
         Route::get('keranjangsaya', [KeranjangController::class, 'index']);
         Route::get('keranjangsaya/{id}/delete', [KeranjangController::class, 'delete']);
+        Route::get('keranjangsaya/{id}/plus', [KeranjangController::class, 'plus']);
+        Route::get('keranjangsaya/{id}/minus', [KeranjangController::class, 'minus']);
         Route::get('masukkankeranjang/{id}', [KeranjangController::class, 'addToCart']);
         Route::post('keranjangsaya/update', [KeranjangController::class, 'update']);
 

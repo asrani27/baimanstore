@@ -10,7 +10,7 @@
 <br/>
 <div class="row">
     <div class="col-12">
-<form method="post" action="/penjual/gantipass">
+<form method="post" action="/user/gantipass">
     @csrf
     <div class="row">
         <div class="col-lg-12 col-12">

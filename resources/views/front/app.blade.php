@@ -69,29 +69,31 @@
       
       @if (Auth::check())
       <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
-        <li class="nav-item">
+        
           @if (Auth::user()->hasRole('superadmin'))
-              
+          <li class="nav-item">
           <a class="nav-link" href="/superadmin/home" role="button">
             <i class="fa fa-user"></i> {{Auth::user()->name}}
           </a>
-          @elseif (Auth::user()->hasRole('pembeli'))
-
-          <a class="nav-link" href="/pembeli/home" role="button">
+          </li>
+          @elseif (Auth::user()->hasRole('user'))
+          <li class="nav-item">
+          <a class="nav-link" href="/user/keranjangsaya" role="button">
+            <i class="fa fa-shopping-cart"></i> <strong>{{keranjangSaya(Auth::user())}} item</strong>
+          </a>
+          </li>
+          <li class="nav-item">
+          <a class="nav-link" href="/user/home" role="button">
             <i class="fa fa-user"></i> {{Auth::user()->name}}
           </a>
-          @else
-              
-          <a class="nav-link" href="/penjual/home" role="button">
-            <i class="fa fa-user"></i> {{Auth::user()->name}}
-          </a>
+          </li>
           @endif
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
           <a class="nav-link" href="/logout" role="button">
             <i class="fa fa-sign-out"></i>
           </a>
-        </li>
+        </li> --}}
       </ul>
       @endif
     </div>

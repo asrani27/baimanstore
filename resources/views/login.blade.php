@@ -23,7 +23,7 @@
       <a href="/" class="h1">IKM KAPUAS</a>
     </div>
     <div class="card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+      <p class="login-box-msg">Industri Kecil Menengah</p>
 
       <form class="form" action="/login" method="post">
         @csrf

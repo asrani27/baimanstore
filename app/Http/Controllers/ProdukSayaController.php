@@ -79,7 +79,7 @@ class ProdukSayaController extends Controller
         Produk::create($attr);
 
         toastr()->success('Sukses Di Simpan');
-        return redirect('/penjual/produksaya');
+        return redirect('/user/produksaya');
     }
 
     public function show($id)
@@ -141,7 +141,7 @@ class ProdukSayaController extends Controller
         Produk::find($id)->update($attr);
 
         toastr()->success('Sukses Di Update');
-        return redirect('/penjual/produksaya');
+        return redirect('/user/produksaya');
     }
 
     public function destroy($id)
