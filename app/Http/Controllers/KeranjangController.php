@@ -118,8 +118,9 @@ class KeranjangController extends Controller
             toastr()->success('Sukses Di Simpan');
             return redirect('/pembeli/riwayatbelanja');
         } catch (\Exception $e) {
+
             DB::rollback();
-            toastr()->error('Gagal Sistem, Hubungi Developer');
+            toastr()->error('gagal Sistem');
             return back();
         }
     }

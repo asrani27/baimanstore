@@ -37,7 +37,7 @@
             @endphp
             <tbody>
             @foreach ($data as $key => $item)
-                    <tr style="font-size:12px; font-family:Arial, Helvetica, sans-serif">
+                    <tr style="font-size:14px; font-family:Arial, Helvetica, sans-serif">
                     <td>{{$no++}}</td>
                     <td>{{$item->created_at}}</td>
                     <td>{{$item->produk->toko->nama_toko}}</td>

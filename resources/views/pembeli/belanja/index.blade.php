@@ -35,7 +35,7 @@
             @endphp
             <tbody>
             @foreach ($data as $key => $item)
-                    <tr style="font-size:12px; font-family:Arial, Helvetica, sans-serif">
+                    <tr style="font-size:14px; font-family:Arial, Helvetica, sans-serif">
                     <td>{{$no++}}</td>
                     <td>{{$item->created_at}}</td>
                     <td>{{$item->toko->nama_toko}}</td>
@@ -66,7 +66,7 @@
                     <td>
                         <a href="/pembeli/riwayatbelanja/{{$item->id}}/diterima" class="btn btn-xs btn-primary"  onclick="return confirm('yakin di pesanan anda sudah diterima?');">Diterima</a>
                         <a href="/pembeli/riwayatbelanja/{{$item->id}}/detail" class="btn btn-xs btn-primary">Detail</a>
-                        <a href="#" class="btn btn-xs btn-primary upload-nota" data-id="{{$item->id}}">Upload</a>
+                        <a href="#" class="btn btn-xs btn-primary upload-nota" data-id="{{$item->id}}">Upload Bukti</a>
                     </td>
                 
                     </tr>

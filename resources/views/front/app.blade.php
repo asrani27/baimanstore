@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>BAIMAN STORE</title>
+  <title>IKM KAPUAS</title>
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <link rel="stylesheet" href="/theme/plugins/fontawesome-free/css/all.min.css">
@@ -24,8 +24,8 @@
   <nav class="main-header navbar navbar-expand-md navbar-dark bg-gradient-primary text-white">
     <div class="container">
       <a href="/" class="navbar-brand">
-        <img src="/theme/logo.png" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">BAIMANSTORE</span>
+        {{-- <img src="#" alt="" class="brand-image img-circle elevation-3" style="opacity: .8"> --}}
+        <span class="brand-text font-weight-light">IKM KAPUAS</span>
       </a>
 
       <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,9 +40,7 @@
           <li class="nav-item">
             <a href="/tentangkami" class="nav-link"><i class="fas fa-university"></i> Tentang Kami</a>
           </li>
-          <li class="nav-item">
-            <a href="/pengrajin" class="nav-link"><i class="fas fa-user"></i> Pengrajin</a>
-          </li>
+          
           <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fas fa-shopping-cart"></i> Produk</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
@@ -102,7 +100,7 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-
+    <br/>
     <!-- Main content -->
     <div class="content">
       <div class="container">
@@ -167,7 +165,7 @@
     <br/>
     <div class="row text-center">
       <div class="col-md-12">
-        <strong>PEMKO BANJARMASIN</strong> 
+        <strong>PEMMERINTAH KABUPATEN KAPUAS</strong> 
       </div>
     </div>
     </div>

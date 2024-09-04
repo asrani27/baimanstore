@@ -155,7 +155,7 @@ Beranda
               <td>13</td>
               <td>Upload NPWP (jpg/png)</td>
               <td><input type="file" class="form-control" name="file_npwp">
-                @if ($data->file_nik == null)
+                @if ($data->file_npwp == null)
                 <img class="direct-chat-img" src="/theme/dist/img/default-150x150.png" alt="message user image">
                 @else
                 <a href="/storage/toko_{{$data->id}}/compress/{{$data->file_npwp}}" target="_blank"><img src="/storage/toko_{{$data->id}}/compress/{{$data->file_npwp}}" width="20%"></a>

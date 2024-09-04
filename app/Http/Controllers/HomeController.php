@@ -44,6 +44,7 @@ class HomeController extends Controller
         $tp = count(Produk::where('toko_id', Auth::user()->toko->id)->get());
         $pt = Auth::user()->toko->nama_toko;
         $data = Auth::user()->toko;
+
         return view('penjual.home', compact('tp', 'pt', 'data'));
     }
 
@@ -92,7 +93,7 @@ class HomeController extends Controller
 
     public function welcome()
     {
-        $produk = Produk::where('publish', 1)->orderBy('created_at', 'DESC')->paginate(12);
+        $produk = Produk::orderBy('created_at', 'DESC')->paginate(12);
         $banner = Banner::get();
         $kategoriBarang = Kategori::where('komoditas', 'barang')->get();
         $kategoriJasa = Kategori::where('komoditas', 'jasa')->get();

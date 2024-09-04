@@ -46,14 +46,14 @@
 </div>
 
 <div style="padding-bottom: 10px;">
-  <button type="button" class='btn btn-xs bg-gradient-primary'>KOMODITAS BARANG</button>
+  <h3>KOMODITAS BARANG</h3>
 </div>
 <div class="row">
   @foreach ($kategoriBarang as $item)
   <div class="col-lg-1 col-3">
     <!-- small box -->
     <a href="/kategori/{{$item->id}}/detail">
-    <div class="small-box bg-gradient-primary text-center">
+    <div class="small-box bg-gradient-info text-center">
       <div class="inner">
         
         @if ($item->foto == null)
@@ -61,9 +61,10 @@
         @else
             <img src="/storage/kategori/compress/{{$item->foto}}" width="80%;">
         @endif
-        <p style="font-size: 10px;">{{Str::limit($item->nama, 20)}}
+        
+        <p style="font-size: 12px; padding-top:10px">{{Str::limit($item->nama, 20)}}
           @if (Str::length($item->nama) < 13)
-              <br/><br/>
+              
           @else    
           
           @endif</p>
@@ -75,26 +76,27 @@
 </div>
 
 <div style="padding-bottom: 10px;">
-  <button type="button" class='btn btn-xs bg-gradient-primary'>KOMODITAS JASA</button>
+  <h3>KOMODITAS JASA</h3>
 </div>
 <div class="row">
   @foreach ($kategoriJasa as $item)
   <div class="col-lg-1 col-3">
     <!-- small box -->
     <a href="/kategori/{{$item->id}}/detail">
-    <div class="small-box bg-gradient-primary text-center">
+    <div class="small-box bg-gradient-info text-center">
       <div class="inner">
         @if ($item->foto == null)
         <img src="https://sosialita.tanahlautkab.go.id/assets/uploads/kategoriproduksub/pbf9Kgut20210713103513.png" alt="User Image">
         @else
         <img src="/storage/kategori/compress/{{$item->foto}}" width="80%;">
         @endif
-        <p style="font-size: 10px;">{{Str::limit($item->nama, 20)}}
+        <p style="font-size: 12px; padding-top:10px">{{Str::limit($item->nama, 20)}}
           @if (Str::length($item->nama) < 13)
-              <br/><br/>
+             
           @else    
           
-          @endif</p>
+          @endif
+        </p>
       </div>
     </div>
   </a>
@@ -157,7 +159,7 @@
         <div class="row">
           <div class="col-sm-12">
               <span class="text-secondary text-bold"><a href="/produk/{{$item->id}}/detail" class="text-muted">{{$item->nama}}</a></span><br/>
-              {{-- <span class="text-danger text-bold">Rp. {{number_format($item->harga)}}</span> --}}
+              <span class="text-danger text-bold">Rp. {{number_format($item->harga)}}</span>
           </div>
           <!-- /.col -->
         </div>
