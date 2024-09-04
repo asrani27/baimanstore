@@ -32,6 +32,8 @@ Route::get('/semuaproduk', [HomeController::class, 'semuaproduk']);
 Route::get('/kategori/{id}/detail', [HomeController::class, 'kategoriproduk']);
 Route::get('/produk/cari', [HomeController::class, 'cariProduk']);
 Route::get('/produk/{id}/detail', [HomeController::class, 'detailProduk']);
+Route::get('/register', [HomeController::class, 'register']);
+Route::post('/register', [HomeController::class, 'storeRegister']);
 Route::get('/daftar', [HomeController::class, 'daftar']);
 Route::post('/daftar/pembeli', [HomeController::class, 'daftarPembeli']);
 Route::post('/daftar/penjual', [HomeController::class, 'daftarPenjual']);
@@ -74,6 +76,37 @@ Route::group(['middleware' => ['auth', 'role:superadmin']], function () {
     });
 });
 
+
+
+Route::group(['middleware' => ['auth', 'role:user']], function () {
+    Route::prefix('user')->group(function () {
+        //pembelian
+        Route::get('gantipass', [GantiPassController::class, 'gantipassuser']);
+        Route::post('gantipass', [GantiPassController::class, 'resetpass']);
+        Route::post('profil', [GantiPassController::class, 'profil']);
+        Route::get('keranjangsaya', [KeranjangController::class, 'index']);
+        Route::get('keranjangsaya/{id}/delete', [KeranjangController::class, 'delete']);
+        Route::get('masukkankeranjang/{id}', [KeranjangController::class, 'addToCart']);
+        Route::post('keranjangsaya/update', [KeranjangController::class, 'update']);
+
+        Route::get('checkout', [KeranjangController::class, 'checkout']);
+
+        Route::get('tokosaya', [HomeController::class, 'tokosaya']);
+        Route::get('riwayatbelanja', [RiwayatBelanjaController::class, 'index']);
+        Route::get('riwayatbelanja/{id}/detail', [RiwayatBelanjaController::class, 'detail']);
+        Route::get('riwayatbelanja/{id}/diterima', [RiwayatBelanjaController::class, 'diterima']);
+
+
+        Route::post('uploadnota', [RiwayatBelanjaController::class, 'uploadnota']);
+
+        //penjualan
+        Route::resource('produksaya', ProdukSayaController::class);
+        Route::get('pesanan', [PesananController::class, 'index']);
+        Route::post('uploadnota', [PesananController::class, 'uploadnota']);
+        Route::post('nomorresi', [PesananController::class, 'nomorresi']);
+    });
+});
+
 Route::group(['middleware' => ['auth', 'role:pembeli']], function () {
     Route::prefix('pembeli')->group(function () {
         Route::get('gantipass', [GantiPassController::class, 'gantipassuser']);
@@ -100,7 +133,7 @@ Route::group(['middleware' => ['auth', 'role:penjual']], function () {
         Route::get('gantipass', [GantiPassController::class, 'gantipassuser']);
         Route::post('gantipass', [GantiPassController::class, 'resetpass']);
         Route::post('profil', [GantiPassController::class, 'profil']);
-        Route::resource('produksaya', ProdukSayaController::class);
+        // Route::resource('produksaya', ProdukSayaController::class);
         Route::get('pesanan', [PesananController::class, 'index']);
         Route::post('uploadnota', [PesananController::class, 'uploadnota']);
         Route::post('nomorresi', [PesananController::class, 'nomorresi']);

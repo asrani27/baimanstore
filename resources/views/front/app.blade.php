@@ -25,7 +25,7 @@
     <div class="container">
       <a href="/" class="navbar-brand">
         {{-- <img src="#" alt="" class="brand-image img-circle elevation-3" style="opacity: .8"> --}}
-        <span class="brand-text font-weight-light">IKM KAPUAS</span>
+        <span class="brand-text font-weight-light">IKM Industri Kecil Menengah</span>
       </a>
 
       <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,17 +55,17 @@
             <a href="/kontak" class="nav-link"><i class="fas fa-phone"></i> Kontak</a>
           </li>
           
-          @if (!Auth::check()) 
-          <li class="nav-item">
-            <a href="/login" class="nav-link"><i class="fas fa-sign-in-alt"></i> Login</a>
-          </li>
-          <li class="nav-item">
-            <a href="/daftar" class="nav-link"><i class="fas fa-edit"></i> Daftar</a>
-          </li>
-          @endif
 
         </ul>
       </div>
+      
+      @if (!Auth::check()) 
+      <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+        <li class="nav-item">
+          <a href="/login" class="nav-link"><i class="fas fa-sign-in-alt"></i> Login</a>
+        </li>
+      </ul>
+      @endif
       
       @if (Auth::check())
       <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">

@@ -33,6 +33,19 @@ class HomeController extends Controller
         return view('user.home', compact('tp', 'pt', 'data'));
     }
 
+    public function tokosaya()
+    {
+        if (Auth::user()->toko == null) {
+            Auth::logout();
+            toastr()->error('User Telah Di Hapus Dari Aplikasi');
+            return redirect('/login');
+        }
+        $tp = count(Produk::where('toko_id', Auth::user()->toko->id)->get());
+        $pt = Auth::user()->toko->nama_toko;
+        $data = Auth::user()->toko;
+
+        return view('penjual.home', compact('tp', 'pt', 'data'));
+    }
 
     public function penjual()
     {
@@ -109,9 +122,76 @@ class HomeController extends Controller
         return view('tentang', compact('kategori', 'profil'));
     }
 
+    public function register()
+    {
+        return view('register');
+    }
     public function daftar()
     {
         return view('daftar');
+    }
+
+    public function storeRegister(Request $req)
+    {
+        // check email
+        $email = User::where('email', $req->email)->first();
+        if ($email != null) {
+            toastr()->error('Email Sudah Ada, Silahkan Gunakan email lain');
+            $req->flash();
+            return back();
+        }
+
+        // check username
+        $email = User::where('username', $req->username)->first();
+        if ($email != null) {
+            toastr()->error('username Sudah Ada, Silahkan Gunakan username lain');
+            $req->flash();
+            return back();
+        }
+
+        if ($req->password != $req->confirm_password) {
+            toastr()->error('Password Tidak Sama');
+            $req->flash();
+            return back();
+        }
+
+        // simpan data
+
+        DB::beginTransaction();
+        try {
+
+            $role = Role::where('name', 'user')->first();
+
+            $user = new User;
+            $user->name = $req->nama;
+            $user->username = $req->username;
+            $user->email = $req->email;
+            $user->password = bcrypt($req->password);
+            $user->save();
+
+            $user->roles()->attach($role);
+
+            $pembeli = new Pembeli;
+            $pembeli->nama = $req->nama;
+            $pembeli->user_id = $user->id;
+            $pembeli->save();
+
+            $penjual = new Toko;
+            $penjual->nama_pemilik = $req->nama;
+            $penjual->user_id = $user->id;
+            $penjual->save();
+
+            DB::commit();
+
+            Auth::loginUsingId($user->id);
+
+            toastr()->success('Berhasil Daftar');
+            return redirect('/user/home');
+        } catch (\Exception $e) {
+            DB::rollback();
+            toastr()->error('Gagal');
+            return back();
+        }
     }
 
     public function daftarPembeli(Request $req)

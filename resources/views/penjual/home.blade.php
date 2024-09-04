@@ -82,7 +82,7 @@ Beranda
               $no =1;
           @endphp
           <tbody>
-          <form  method="post" action="/penjual/profil" enctype="multipart/form-data">
+          <form  method="post" action="/user/profil" enctype="multipart/form-data">
           @csrf
           <tr>
               <td>1</td>
