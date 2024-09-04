@@ -31,7 +31,7 @@ function rating($rating)
         return '<img src="/star/on.png"><img src="/star/on.png"><img src="/star/on.png"><img src="/star/off.png"><img src="/star/off.png">';
     }
     if ($rating == 4) {
-        return '<img src="/star/on.png"><img src="/star/on.png"><img src="/star/on.png"><img src="/star/on.png"><img src="/star/on.png">';
+        return '<img src="/star/on.png"><img src="/star/on.png"><img src="/star/on.png"><img src="/star/on.png"><img src="/star/off.png">';
     }
     if ($rating == 5) {
         return '<img src="/star/on.png"><img src="/star/on.png"><img src="/star/on.png"><img src="/star/on.png"><img src="/star/on.png">';

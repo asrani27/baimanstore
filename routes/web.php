@@ -96,7 +96,7 @@ Route::group(['middleware' => ['auth', 'role:user']], function () {
         Route::get('tokosaya', [HomeController::class, 'tokosaya']);
         Route::get('riwayatbelanja', [RiwayatBelanjaController::class, 'index']);
         Route::get('riwayatbelanja/{id}/detail', [RiwayatBelanjaController::class, 'detail']);
-        Route::get('berirating', [RiwayatBelanjaController::class, 'berirating']);
+        Route::post('berirating', [RiwayatBelanjaController::class, 'berirating']);
         Route::get('riwayatbelanja/{id}/diterima', [RiwayatBelanjaController::class, 'diterima']);
 
 

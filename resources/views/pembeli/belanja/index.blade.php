@@ -67,7 +67,7 @@
                     <td>
                         @if ($item->status == 1)
                             
-                        <a href="#" class="btn btn-xs btn-primary berirating">Beri Rating</a>
+                        <a href="#" class="btn btn-xs btn-primary berirating" data-id="{{$item->id}}">Beri Rating</a>
                         @else
                         <a href="/user/riwayatbelanja/{{$item->id}}/diterima" class="btn btn-xs btn-primary"  onclick="return confirm('yakin di pesanan anda sudah diterima?');">Diterima</a>
                         <a href="/user/riwayatbelanja/{{$item->id}}/detail" class="btn btn-xs btn-primary">Detail</a>
@@ -103,7 +103,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Rating Bintang</label>
-                        <select class="form-control">
+                        <select class="form-control" name="rating">
                             <option value="5">5</option>
                             <option value="4">4</option>
                             <option value="3">3</option>
