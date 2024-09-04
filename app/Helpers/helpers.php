@@ -22,19 +22,19 @@ function rating($rating)
         return '<img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png">';
     }
     if ($rating == 1) {
-        return '<img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png">';
+        return '<img src="/star/on.png"><img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png">';
     }
-    if ($rating == 0) {
-        return '<img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png">';
+    if ($rating == 2) {
+        return '<img src="/star/on.png"><img src="/star/on.png"><img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png">';
     }
-    if ($rating == 0) {
-        return '<img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png">';
+    if ($rating == 3) {
+        return '<img src="/star/on.png"><img src="/star/on.png"><img src="/star/on.png"><img src="/star/off.png"><img src="/star/off.png">';
     }
-    if ($rating == 0) {
-        return '<img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png">';
+    if ($rating == 4) {
+        return '<img src="/star/on.png"><img src="/star/on.png"><img src="/star/on.png"><img src="/star/on.png"><img src="/star/on.png">';
     }
-    if ($rating == 0) {
-        return '<img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png"><img src="/star/off.png">';
+    if ($rating == 5) {
+        return '<img src="/star/on.png"><img src="/star/on.png"><img src="/star/on.png"><img src="/star/on.png"><img src="/star/on.png">';
     }
 }
 
