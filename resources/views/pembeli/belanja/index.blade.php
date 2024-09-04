@@ -59,14 +59,20 @@
                             <span class="badge badge-info">Di Proses</span>
                         @elseif($item->status == 1)
                             <span class="badge badge-success">Di terima</span>
+                            <img src="/star/on.png"><img src="/star/off.png">
                         @else
                             <span class="badge badge-danger">Di Batalkan</span>
                         @endif
                     </td>
                     <td>
+                        @if ($item->status == 1)
+                            
+                        <a href="#" class="btn btn-xs btn-primary berirating">Beri Rating</a>
+                        @else
                         <a href="/user/riwayatbelanja/{{$item->id}}/diterima" class="btn btn-xs btn-primary"  onclick="return confirm('yakin di pesanan anda sudah diterima?');">Diterima</a>
                         <a href="/user/riwayatbelanja/{{$item->id}}/detail" class="btn btn-xs btn-primary">Detail</a>
                         <a href="#" class="btn btn-xs btn-primary upload-nota" data-id="{{$item->id}}">Upload Bukti</a>
+                        @endif
                     </td>
                 
                     </tr>
@@ -81,6 +87,41 @@
 </div>
 
 
+
+<div class="modal fade" id="modal-rating" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post" action="/user/berirating" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-header bg-gradient-primary" style="padding:10px">
+                    <h4 class="modal-title text-sm">BERI RATING</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Rating Bintang</label>
+                        <select class="form-control">
+                            <option value="5">5</option>
+                            <option value="4">4</option>
+                            <option value="3">3</option>
+                            <option value="2">2</option>
+                            <option value="1">1</option>
+                        </select>
+                        <input type="hidden" class="form-control" id="penjualan_id_rating" name="penjualan_id" readonly>
+                    </div>
+                </div>
+
+                <div class="modal-footer justify-content-between">
+                    <button type="submit" class="btn btn-block btn-primary"><i class="fas fa-paper-plane"></i>
+                        Upload</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <div class="modal fade" id="modal-edit" style="display: none;" aria-hidden="true">
     <div class="modal-dialog">
@@ -114,6 +155,13 @@
 
 @push('js')
 
+
+<script>
+    $(document).on('click', '.berirating', function() {
+   $('#penjualan_id_rating').val($(this).data('id'));
+   $("#modal-rating").modal();
+});
+</script>
 <script>
     $(document).on('click', '.upload-nota', function() {
    $('#penjualan_id').val($(this).data('id'));
