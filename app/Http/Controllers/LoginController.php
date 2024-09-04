@@ -14,12 +14,11 @@ class LoginController extends Controller
     public function login(Request $req)
     {
         if (Auth::attempt(['username' => $req->username, 'password' => $req->password], true)) {
+            //dd(Auth::user());
             if (Auth::user()->hasRole('superadmin')) {
                 return redirect('/superadmin/home');
-            } elseif (Auth::user()->hasRole('pembeli')) {
-                return redirect('/pembeli/home');
-            } elseif (Auth::user()->hasRole('penjual')) {
-                return redirect('/penjual/home');
+            } elseif (Auth::user()->hasRole('user')) {
+                return redirect('/user/home');
             }
         } else {
             toastr()->error('Username / Password Tidak Ditemukan');
