@@ -49,7 +49,7 @@
                         @if ($item->upload == null)
                             -
                         @else
-                            <a href="/storage/nota/compress/{{$item->upload}}" target="_blank"><i class="fa fa-download"></i></a>
+                            <a href="/storage/nota/compress/{{$item->upload}}" target="_blank"><i class="fa fa-download"></i> Lihat Bukti</a>
                         @endif    
                         </td>
                         <td>
@@ -71,7 +71,7 @@
                     </td>
                     <td>
                         
-                        <a href="#" class="btn btn-xs btn-primary upload-nota" data-id="{{$item->id}}"><i class="fas fa-upload"></i> Upload Nota</a>
+                        <a href="#" class="btn btn-xs btn-primary upload-nota" data-id="{{$item->id}}"><i class="fas fa-upload"></i> Input Nomor Resi</a>
                         
                         @if($item->status != 1)
                         <a href="/penjual/pesanan/{{$item->id}}/cancel" class="btn btn-xs btn-danger" onclick="return confirm('yakin di cancel?');"><i class="fas fa-trash"></i> Cancel</button>    
@@ -92,10 +92,10 @@
 <div class="modal fade" id="modal-edit" style="display: none;" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form method="post" action="/penjual/uploadnota" enctype="multipart/form-data">
+            <form method="post" action="/penjual/nomorresi" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-header bg-gradient-primary" style="padding:10px">
-                    <h4 class="modal-title text-sm">UPLOAD NOTA</h4>
+                    <h4 class="modal-title text-sm">MASUKKAN NO RESI</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
@@ -103,15 +103,23 @@
 
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>File</label>
-                        <input type="file" class="form-control" name="file" required>
+                        <label>Nama Jasa Pengiriman</label>
+                        <select class="form-control" name="jasa" required>
+                            <option value="jnt">JNT</option>
+                            <option value="jne">JNE</option>
+                            <option value="sicepat">SICEPAT</option>
+                        </select>
                         <input type="hidden" class="form-control" id="penjualan_id" name="penjualan_id" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Nomor Resi</label>
+                        <input type="text" class="form-control" name="resi" required>
                     </div>
                 </div>
 
                 <div class="modal-footer justify-content-between">
                     <button type="submit" class="btn btn-block btn-primary"><i class="fas fa-paper-plane"></i>
-                        Upload</button>
+                        Input</button>
                 </div>
             </form>
         </div>

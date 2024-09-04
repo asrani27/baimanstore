@@ -61,4 +61,14 @@ class PesananController extends Controller
         toastr()->success('Berhasil Di Upload');
         return back();
     }
+
+    public function nomorresi(Request $req)
+    {
+        Penjualan::find($req->penjualan_id)->update([
+            'jasa' => $req->jasa,
+            'resi' => $req->resi,
+        ]);
+        toastr()->success('Berhasil Di input');
+        return back();
+    }
 }

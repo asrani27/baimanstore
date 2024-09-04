@@ -103,6 +103,7 @@ Route::group(['middleware' => ['auth', 'role:penjual']], function () {
         Route::resource('produksaya', ProdukSayaController::class);
         Route::get('pesanan', [PesananController::class, 'index']);
         Route::post('uploadnota', [PesananController::class, 'uploadnota']);
+        Route::post('nomorresi', [PesananController::class, 'nomorresi']);
     });
 });
 
