@@ -1,6 +1,34 @@
 @extends('front.app')
 
 @section('content')
+
+<form method="get" action="/produk/cari">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <select class="form-control" name="kategori_id">
+          <option value="">-Kategori-</option>
+          @foreach ($kategori as $item)
+          <option value="{{$item->id}}">{{$item->nama}}</option>                    
+          @endforeach
+        </select>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <div class="input-group input-group">
+            <input type="search" class="form-control" placeholder="Pencarian" value=""  name="search" required>
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-default">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    </div>
+  </div>
+  </form>
+
 <div class="row">
   <div class="col-md-12">
     <div class="card">
@@ -104,33 +132,7 @@
   @endforeach
 </div>
 
-<br/>
-<form method="get" action="/produk/cari">
-<div class="row">
-  <div class="col-md-6">
-    <div class="form-group">
-      <select class="form-control" name="kategori_id">
-        <option value="">-Kategori-</option>
-        @foreach ($kategori as $item)
-        <option value="{{$item->id}}">{{$item->nama}}</option>                    
-        @endforeach
-      </select>
-    </div>
-  </div>
-  <div class="col-md-6">
-    <div class="form-group">
-      <div class="input-group input-group">
-          <input type="search" class="form-control" placeholder="Pencarian" value=""  name="search" required>
-          <div class="input-group-append">
-              <button type="submit" class="btn btn-default">
-                  <i class="fa fa-search"></i>
-              </button>
-          </div>
-      </div>
-  </div>
-  </div>
-</div>
-</form>
+
 
 <div class="row">
   <div class="col-md-12">
