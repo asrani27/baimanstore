@@ -64,8 +64,8 @@
                         @endif
                     </td>
                     <td>
-                        <a href="/pembeli/riwayatbelanja/{{$item->id}}/diterima" class="btn btn-xs btn-primary"  onclick="return confirm('yakin di pesanan anda sudah diterima?');">Diterima</a>
-                        <a href="/pembeli/riwayatbelanja/{{$item->id}}/detail" class="btn btn-xs btn-primary">Detail</a>
+                        <a href="/user/riwayatbelanja/{{$item->id}}/diterima" class="btn btn-xs btn-primary"  onclick="return confirm('yakin di pesanan anda sudah diterima?');">Diterima</a>
+                        <a href="/user/riwayatbelanja/{{$item->id}}/detail" class="btn btn-xs btn-primary">Detail</a>
                         <a href="#" class="btn btn-xs btn-primary upload-nota" data-id="{{$item->id}}">Upload Bukti</a>
                     </td>
                 
@@ -85,7 +85,7 @@
 <div class="modal fade" id="modal-edit" style="display: none;" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form method="post" action="/pembeli/uploadnota" enctype="multipart/form-data">
+            <form method="post" action="/user/uploadnota" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-header bg-gradient-primary" style="padding:10px">
                     <h4 class="modal-title text-sm">UPLOAD BUKTI PEMBAYARAN</h4>
